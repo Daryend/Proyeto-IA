@@ -8,7 +8,6 @@ natural y análisis de grandes volúmenes de texto.
 
 import json
 
-
 def load_text(file_path):
     """
     Carga el contenido completo de un archivo de texto.
@@ -66,15 +65,18 @@ def chunk_text(text, max_words=350):
     return chunks
 
 if __name__ == "__main__":
-    # Definir rutas de entrada y salida
-    input_path = "../outputs/texto_extraido.txt"
-    output_path = "../outputs/chunks.json"
+    # Definir rutas de entrada y salida (relativas al directorio del script)
+    input_path = "./outputs/texto_extraido.txt"
+    output_path = "./outputs/chunks.json"
 
     # Cargar el texto extraído del archivo
     text = load_text(input_path)
     
     # Fragmentar el texto en chunks de palabras
-    chunks = chunk_text(text)
+    chunks_text = chunk_text(text)
+    
+    # Convertir chunks en formato de objetos con propiedad "texto"
+    chunks = [{"texto": chunk} for chunk in chunks_text]
 
     # Guardar los chunks en formato JSON
     with open(output_path, 'w', encoding='utf-8') as file:
