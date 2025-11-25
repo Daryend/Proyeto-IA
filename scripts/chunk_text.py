@@ -1,13 +1,7 @@
 #!/usr/bin/env python3
-"""
-Fragmenta un archivo de texto en "chunks" adecuados para búsqueda semántica.
+# Divide un texto en fragmentos (chunks) coherentes para busqueda semantica.
+# Genera archivo JSONL con id, texto y fuente de cada chunk.
 
-Uso:
-  python scripts/chunk_text.py --input Data/FUNDAMENTO+DE+LA+IA+volumen+I.txt
-
-Output: por defecto genera `Data/chunks.jsonl` con un JSON por línea:
-  {"id": 0, "text": "...chunk text...", "source": "FUNDAMENTO+DE+LA+IA+volumen+I.pdf"}
-"""
 import argparse
 import json
 from pathlib import Path
@@ -15,6 +9,7 @@ from typing import List
 
 
 def chunk_text(text: str, max_chars: int = 1000, overlap: int = 200) -> List[str]:
+    # Crea chunks de tamaño maximo con solapamiento para mantener contexto.
     paragraphs = [p.strip() for p in text.split('\n\n') if p.strip()]
     chunks: List[str] = []
     current = ""

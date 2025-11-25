@@ -1,14 +1,7 @@
 #!/usr/bin/env python3
-"""
-Módulo de búsqueda semántica.
+# Motor de busqueda semantica que usa FAISS si esta disponible,
+# sino utiliza busqueda por similitud coseno con numpy.
 
-Intenta usar FAISS si está disponible. Si no, usa búsqueda por similitud coseno en numpy.
-
-API simple:
- - build_index(embeddings) -> index object
- - search(index, query_embedding, top_k) -> list of (idx, score)
-
-"""
 from typing import List, Tuple, Optional
 import numpy as np
 

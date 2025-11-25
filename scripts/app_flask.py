@@ -1,12 +1,7 @@
 #!/usr/bin/env python3
-"""
-Flask app estilo ChatGPT para el chatbot del libro.
-Interfaz minimalista: historial de chat + input.
+# Servidor web Flask con interfaz estilo ChatGPT.
+# Proporciona historial de chat y busqueda semantica sin controles visibles.
 
-Ejecutar:
-  & ".venv\\Scripts\\python.exe" scripts\\app_flask.py
-
-"""
 import sys
 from pathlib import Path
 import json
@@ -20,7 +15,7 @@ import search_engine
 
 APP = Flask(__name__)
 
-# Cargar recursos una vez (al iniciar)
+# Cargar embeddings y metadata al iniciar
 EMB_PATH = Path('Data/embeddings.npz')
 META_PATH = Path('Data/metadata.jsonl')
 MODEL_NAME = 'all-MiniLM-L6-v2'
@@ -478,26 +473,26 @@ HTML = """
 
 @APP.route('/')
 def index():
-    """Servir la página HTML principal."""
+    # Devuelve la pagina HTML principal del chat.
     return HTML
 
 
 @APP.route('/api/search', methods=['POST'])
 def api_search():
-    """Endpoint de API para búsqueda."""
+    # Procesa consultas de busqueda desde el cliente.
     try:
         data = request.get_json()
         question = data.get('question', '').strip()
-        top_k = int(data.get('top_k', 3))
-        threshold = float(data.get('threshold', 0.60))
+        top_k = 3  # Fijo
+        threshold = 0.60  # Fijo
         
         if not question:
-            return jsonify({'error': 'Pregunta vacía'}), 400
+            return jsonify({'error': 'Pregunta vacia'}), 400
         
-        # Generar embedding de la pregunta
+        # Convertir pregunta a embedding
         q_emb = MODEL.encode([question], convert_to_numpy=True)[0]
         
-        # Buscar en el índice
+        # Buscar chunks similares
         raw_results = search_engine.search(INDEX, q_emb, top_k=top_k)
         
         results = []
@@ -507,7 +502,7 @@ def api_search():
                 for idx, score in raw_results:
                     meta = METADATA[idx]
                     results.append({
-                        'text': meta.get('text', '')[:1500],  # Limitar a 1500 caracteres
+                        'text': meta.get('text', '')[:1500],
                         'score': float(score),
                         'source': meta.get('source', 'desconocida')
                     })

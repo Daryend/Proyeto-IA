@@ -1,11 +1,7 @@
 #!/usr/bin/env python3
-"""
-Simple PDF -> plain text extractor using PyPDF2.
+# Extrae texto completo desde un archivo PDF usando PyPDF2.
+# Uso: python scripts/extract_pdf.py --pdf "ruta/archivo.pdf"
 
-Usage:
-  python scripts/extract_pdf.py --pdf "Data/FUNDAMENTO+DE+LA+IA+volumen+I.pdf"
-  python scripts/extract_pdf.py --pdf "Data/mybook.pdf" --out "Data/mybook.txt"
-"""
 import argparse
 from pathlib import Path
 import sys
@@ -14,6 +10,7 @@ import PyPDF2
 
 
 def extract_text(pdf_path: Path) -> str:
+    # Lee todas las paginas del PDF y extrae el texto.
     reader = PyPDF2.PdfReader(str(pdf_path))
     pages = []
     for p in reader.pages:
@@ -25,6 +22,7 @@ def extract_text(pdf_path: Path) -> str:
 
 
 def main() -> int:
+    # Procesa argumentos y ejecuta la extraccion.
     parser = argparse.ArgumentParser(description="Extrae texto de un PDF y lo guarda en un .txt")
     parser.add_argument("--pdf", required=True, help="Ruta al archivo PDF de entrada")
     parser.add_argument("--out", required=False, help="Ruta de salida .txt (opcional)")

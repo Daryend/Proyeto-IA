@@ -1,17 +1,13 @@
 #!/usr/bin/env python3
-"""
-Script para limpiar el texto extraído del PDF.
-- Elimina ISBN
-- Elimina títulos repetidos
-- Elimina encabezados y números de página
-- Consolidar espacios en blanco
-"""
+# Limpia el texto extraído eliminando ISBN, títulos repetidos,
+# encabezados, números de página y espacios en blanco excesivos.
+
 import re
 from pathlib import Path
 
 
 def clean_text(text: str) -> str:
-    """Limpia el texto extraído del PDF."""
+    # Elimina patrones no deseados del texto para mejorar la calidad de los chunks.
     
     # Eliminar ISBN y patrones similares
     text = re.sub(r'ISBN.*?:\s*[0-9\-\s]+', '', text, flags=re.IGNORECASE)

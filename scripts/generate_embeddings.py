@@ -1,15 +1,7 @@
 #!/usr/bin/env python3
-"""
-Genera embeddings para los chunks existentes en `Data/chunks.jsonl`.
+# Genera embeddings vectoriales para cada chunk usando sentence-transformers.
+# Guarda embeddings en formato NPZ y metadata en JSONL.
 
-Salida:
- - `Data/embeddings.npz` -> contiene array `embeddings` (float32)
- - `Data/metadata.jsonl` -> copia de los chunks con campos `id`, `text`, `source`
-
-Uso:
-  python scripts/generate_embeddings.py --chunks Data/chunks.jsonl
-
-"""
 import argparse
 import json
 from pathlib import Path

@@ -3,12 +3,12 @@
 Sistema completo de búsqueda semántica en PDF usando embeddings, FAISS y una interfaz web.
 
 ## Características
-- 📄 **Extracción de PDF**: PyPDF2
-- 📚 **Chunking**: Fragmentación inteligente de texto
-- 🧠 **Embeddings**: sentence-transformers (all-MiniLM-L6-v2)
-- 🔍 **Búsqueda**: FAISS + similitud coseno (fallback numpy)
-- 🖥️ **Interfaz**: Flask con HTML/CSS puro
-- 💬 **CLI**: Modo interactivo por línea de comandos
+- **Extracción de PDF**: PyPDF2
+- **Chunking**: Fragmentación inteligente de texto
+- **Embeddings**: sentence-transformers (all-MiniLM-L6-v2)
+- **Búsqueda**: FAISS + similitud coseno (fallback numpy)
+- **Interfaz**: Flask con HTML/CSS puro
+- **CLI**: Modo interactivo por línea de comandos
 
 ## Requisitos
 - Windows PowerShell (o cmd)

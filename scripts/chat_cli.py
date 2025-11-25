@@ -1,32 +1,22 @@
 #!/usr/bin/env python3
-"""
-CLI simple para consultar el buscador del libro.
+# Interfaz de linea de comandos para consultar el chatbot.
+# Permite modo interactivo o consulta puntual con --ask.
 
-Uso:
- - Modo no interactivo: `python scripts/chat_cli.py --ask "¿Qué es IA?"`
- - Modo interactivo: `python scripts/chat_cli.py`
-
-"""
 import argparse
 import json
 from pathlib import Path
 import numpy as np
+import sys
 
 from sentence_transformers import SentenceTransformer
-import sys
-from pathlib import Path
 
-# Asegurar que el directorio `scripts/` esté en sys.path cuando se ejecute este archivo
+# Asegurar que el directorio scripts/ este en sys.path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import search_engine
 
 
 def load_metadata(path: Path):
-    meta = []
-    with path.open('r', encoding='utf-8') as f:
-        for line in f:
-            meta.append(json.loads(line))
-    return meta
+    # Carga metadatos desde archivo JSONL.
 
 
 def main():
