@@ -1,86 +1,98 @@
 # Buscador del Libro de IA — Chatbot Conversacional
+Sistema completo de búsqueda semántica local sobre un PDF (embeddings + búsqueda por similitud) con una interfaz tipo chat y una alternativa por línea de comandos.
 
-Sistema completo de búsqueda semántica en PDF usando embeddings, FAISS y una interfaz web.
+Resumen rápido
+- Extrae texto desde `Data/FUNDAMENTO+DE+LA+IA+volumen+I.pdf`.
+- Fragmenta el texto en `Data/chunks.jsonl`.
+- Genera embeddings en `Data/embeddings.npz` usando `sentence-transformers`.
+- Sirve una interfaz web con Flask en `http://127.0.0.1:5000` (modo chat).
 
-## Características
-- **Extracción de PDF**: PyPDF2
-- **Chunking**: Fragmentación inteligente de texto
-- **Embeddings**: sentence-transformers (all-MiniLM-L6-v2)
-- **Búsqueda**: FAISS + similitud coseno (fallback numpy)
-- **Interfaz**: Flask con HTML/CSS puro
-- **CLI**: Modo interactivo por línea de comandos
+Requisitos
+- Windows (PowerShell) o cualquier OS con Python 3.8+.
+- Recomiendo usar el virtualenv incluido en los pasos.
 
-## Requisitos
-- Windows PowerShell (o cmd)
-- Python 3.8+
+Pasos para colaboradores (rápido y comprobable)
 
-## Instalación
+1) Clona el repositorio
 
-1) Crear entorno virtual:
+```powershell
+git clone <URL-del-repositorio>
+cd "Proyecto IA"
+```
+
+2) Crear y activar el entorno virtual (PowerShell)
+
 ```powershell
 python -m venv .venv
-.venv\Scripts\Activate.ps1
+.\.venv\Scripts\Activate.ps1
+```
+
+3) Instalar dependencias
+
+```powershell
 pip install -r requirements.txt
 ```
 
-2) Extraer y generar embeddings (se ejecuta una sola vez):
+4) Generar los datos (solo si no existen)
+
+Si ya tienes `Data/chunks.jsonl` y `Data/embeddings.npz`, puedes saltarte este paso.
+
 ```powershell
 & ".venv\Scripts\python.exe" scripts\extract_pdf.py --pdf "Data/FUNDAMENTO+DE+LA+IA+volumen+I.pdf"
 & ".venv\Scripts\python.exe" scripts\chunk_text.py --input "Data/FUNDAMENTO+DE+LA+IA+volumen+I.txt"
 & ".venv\Scripts\python.exe" scripts\generate_embeddings.py --chunks "Data/chunks.jsonl"
 ```
 
-## Uso
+5) Ejecutar la interfaz web (recomendado)
 
-### Opción 1: Interfaz Web (Recomendado)
 ```powershell
 & ".venv\Scripts\python.exe" scripts\app_flask.py
 ```
-Abre en el navegador: **http://127.0.0.1:5000**
 
-Características:
-- Escribe preguntas sobre el libro
-- Ajusta Top K (cuántos fragmentos) y umbral de similitud
-- Ver fragmentos relevantes o mensaje de "no encontrado"
+Abre el navegador en `http://127.0.0.1:5000` y escribe tu pregunta. Esta versión del chat NO expone controles
+de `top_k` ni `threshold` y usa valores fijos seguros (Top K = 3, umbral = 0.60), estilo ChatGPT.
 
-### Opción 2: CLI Interactivo
+6) Uso por línea de comandos (alternativa)
+
+Interactivo:
 ```powershell
 & ".venv\Scripts\python.exe" scripts\chat_cli.py
 ```
 
-Luego escribe tus preguntas (salir con "exit" o Ctrl+C):
-```
-Pregunta: ¿Qué es inteligencia artificial?
-```
-
-### Opción 3: Consulta Puntual
+Consulta puntual:
 ```powershell
-& ".venv\Scripts\python.exe" scripts\chat_cli.py --ask "¿Qué es machine learning?"
+& ".venv\Scripts\python.exe" scripts\chat_cli.py --ask "¿Qué es inteligencia artificial?"
 ```
 
-## Archivos Generados
-- `Data/FUNDAMENTO+DE+LA+IA+volumen+I.txt` → Texto extraído del PDF
-- `Data/chunks.jsonl` → Fragmentos en formato JSONL (586 chunks)
-- `Data/embeddings.npz` → Vectores numéricos (numpy)
-- `Data/metadata.jsonl` → Metadatos de los chunks
+Archivos importantes generados
+- `Data/FUNDAMENTO+DE+LA+IA+volumen+I.txt` — texto extraído del PDF.
+- `Data/chunks.jsonl` — fragmentos (JSONL).
+- `Data/embeddings.npz` — embeddings (numpy compressed array).
+- `Data/metadata.jsonl` — metadatos por fragmento.
 
-## Estructura de Scripts
+Estructura de scripts (rápida)
+
 ```
 scripts/
-├── extract_pdf.py        → Extrae texto desde PDF
-├── chunk_text.py         → Fragmenta texto en chunks
-├── generate_embeddings.py → Genera embeddings con sentence-transformers
-├── search_engine.py      → Motor de búsqueda (FAISS/numpy)
-├── chat_cli.py          → CLI para consultas
-└── app_flask.py         → Servidor web Flask
+├─ extract_pdf.py        # Extrae texto desde el PDF
+├─ clean_text.py         # Limpieza opcional del texto extraído
+├─ chunk_text.py         # Fragmenta el texto en chunks
+├─ generate_embeddings.py# Genera embeddings (sentence-transformers)
+├─ search_engine.py      # Index / búsqueda (FAISS o fallback numpy)
+├─ chat_cli.py           # CLI interactivo / --ask
+└─ app_flask.py          # Servidor web (chat, Top K y umbral fijos)
 ```
 
-## Configuración
-- **Modelo de embeddings**: `all-MiniLM-L6-v2` (rápido, 384-dim)
-- **Umbral por defecto**: 0.60 (similitud mínima)
-- **Top K por defecto**: 3 (fragmentos devueltos)
+Notas y solución de problemas
+- Si al instalar `streamlit` falla, es normal en Windows si falta CMake/Visual Studio: usamos Flask para evitar compilaciones nativas.
+- Asegúrate de activar `.venv` antes de ejecutar scripts para que los paquetes estén disponibles.
+- Si el servidor devuelve "no tengo información", intenta reformular la pregunta o revisar `Data/chunks.jsonl`.
+- El modelo de embeddings `all-MiniLM-L6-v2` se descarga en la primera ejecución de `generate_embeddings.py`.
 
-## Notas
-- La primera ejecución de generación de embeddings descargará el modelo (~30 MB).
-- La búsqueda es offline (todo corre localmente).
-- Sin dependencias de APIs externas (todo open-source).
+Contribuciones
+- Para cambios en el pipeline (p. ej. persistir índice FAISS, mejorar limpieza), crea una rama y abre un PR.
+
+Contacto
+- Si quieres que adapte el chat para mostrar más contexto por respuesta o exponga controles, dime cómo prefieres los límites y lo implemento.
+
+Gracias — ahora está listo para que cualquier colaborador lo clone y ejecute en pocos pasos.
