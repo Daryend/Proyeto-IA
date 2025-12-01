@@ -46,7 +46,7 @@ Si ya tienes `Data/chunks.jsonl` y `Data/embeddings.npz`, puedes saltarte este p
 5) Ejecutar la interfaz web (recomendado)
 
 ```powershell
-& ".venv\Scripts\python.exe" scripts\app_flask.py
+& ".venv\Scripts\python.exe" scripts\app_flask_fixed.py
 ```
 
 Abre el navegador en `http://127.0.0.1:5000` y escribe tu pregunta. Esta versión del chat NO expone controles
