@@ -39,7 +39,7 @@ Si ya tienes `Data/chunks.jsonl` y `Data/embeddings.npz`, puedes saltarte este p
 
 ```powershell
 & ".venv\Scripts\python.exe" scripts\extract_pdf.py --pdf "Data/FUNDAMENTO+DE+LA+IA+volumen+I.pdf"
-& ".venv\Scripts\python.exe" scripts\chunk_text.py --input "Data/FUNDAMENTO+DE+LA+IA+volumen+I.txt"
+& ".venv\Scripts\python.exe" scripts\chunk_text.py --input "Data/FUNDAMENTO+DE+LA+IA+volumen+I.txt" --max-chars 500 --overlap 120
 & ".venv\Scripts\python.exe" scripts\generate_embeddings.py --chunks "Data/chunks.jsonl"
 ```
 
