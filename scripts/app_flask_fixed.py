@@ -126,9 +126,10 @@ def api_search():
         if not question:
             return jsonify({'error': 'Pregunta vacía'}), 400
 
-        # Parámetros fijos
+        # Parámetros Ajustados
         top_k = 3
-        threshold = 0.60
+        # CAMBIO CRITICO: Bajamos de 0.60 a 0.40 o 055 para permitir respuestas del PDF
+        threshold = 0.55
 
         q_emb = MODEL.encode([question], convert_to_numpy=True)[0]
         raw_results = search_engine.search(INDEX, q_emb, top_k=top_k)
