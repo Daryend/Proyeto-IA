@@ -4,34 +4,57 @@
 
 import argparse
 import json
+import warnings
 from pathlib import Path
 from typing import List
 
+import nltk
 
 def chunk_text(text: str, max_chars: int = 1000, overlap: int = 200) -> List[str]:
-    # Crea chunks de tamaño maximo con solapamiento para mantener contexto.
-    paragraphs = [p.strip() for p in text.split('\n\n') if p.strip()]
+    try:
+        sentences = nltk.sent_tokenize(text)
+    except LookupError:
+        print("Descargando tokenizadores 'punkt' y 'punkt_tab' de NLTK...")
+        nltk.download(['punkt', 'punkt_tab'])
+        sentences = nltk.sent_tokenize(text)
+ 
+    if not sentences:
+        return []
+
     chunks: List[str] = []
-    current = ""
+    current_chunk_sentences: List[str] = []
 
-    for p in paragraphs:
-        if not current:
-            current = p
-            # if paragraph very long, split below
-        else:
-            candidate = current + "\n\n" + p
-            if len(candidate) <= max_chars:
-                current = candidate
-            else:
-                chunks.append(current)
-                current = p
-        # ensure current not too long
-        while len(current) > max_chars:
-            chunks.append(current[:max_chars])
-            current = current[max_chars - overlap:]
+    for sentence in sentences:
+        # Si una oración es más larga que el tamaño máximo, trátala como un chunk propio.
+        if len(sentence) > max_chars:
+            warnings.warn(f"Una oración de {len(sentence)} caracteres excede el máximo de {max_chars} y será un chunk individual.")
+            # Si había un chunk en proceso, guárdalo primero.
+            if current_chunk_sentences:
+                chunks.append(" ".join(current_chunk_sentences))
+            chunks.append(sentence)
+            current_chunk_sentences = []
+            continue
 
-    if current:
-        chunks.append(current)
+        # Si agregar la nueva oración excede el tamaño máximo, finaliza el chunk actual.
+        if len(" ".join(current_chunk_sentences + [sentence])) > max_chars:
+            chunks.append(" ".join(current_chunk_sentences))
+
+            # Inicia el siguiente chunk con solapamiento.
+            overlap_sentences: List[str] = []
+            current_overlap_len = 0
+            # Retrocede desde el final del chunk recién creado para construir el solapamiento.
+            for s in reversed(current_chunk_sentences):
+                if current_overlap_len + len(s) > overlap:
+                    break
+                overlap_sentences.insert(0, s)
+                current_overlap_len += len(s) + 1 # +1 por el espacio
+            
+            current_chunk_sentences = overlap_sentences
+ 
+        current_chunk_sentences.append(sentence)
+
+    if current_chunk_sentences:
+        chunks.append(" ".join(current_chunk_sentences))
 
     return chunks
 
