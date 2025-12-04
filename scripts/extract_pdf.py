@@ -10,10 +10,12 @@ import PyPDF2
 
 
 def extract_text(pdf_path: Path) -> str:
-    # Lee todas las paginas del PDF y extrae el texto.
+    # Lee un numero limitado de paginas del PDF y extrae el texto.
+    MAX_PAGES_TO_EXTRACT = 81  # Limite de paginas a procesar
+
     reader = PyPDF2.PdfReader(str(pdf_path))
     pages = []
-    for p in reader.pages:
+    for p in reader.pages[:MAX_PAGES_TO_EXTRACT]:
         try:
             pages.append(p.extract_text() or "")
         except Exception:
