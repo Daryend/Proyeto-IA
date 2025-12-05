@@ -17,7 +17,11 @@ import search_engine
 
 def load_metadata(path: Path):
     # Carga metadatos desde archivo JSONL.
-
+    meta = []
+    with path.open('r', encoding='utf-8') as f:
+        for line in f:
+            meta.append(json.loads(line))
+    return meta
 
 def main():
     parser = argparse.ArgumentParser()
@@ -26,7 +30,8 @@ def main():
     parser.add_argument('--meta', type=str, default='Data/metadata.jsonl', help='Ruta metadata jsonl')
     parser.add_argument('--model', type=str, default='all-MiniLM-L6-v2')
     parser.add_argument('--top-k', type=int, default=3)
-    parser.add_argument('--threshold', type=float, default=0.60, help='Umbral de similitud para aceptar respuesta')
+    # CAMBIO: Umbral ajustado a 0.45 para consistencia con la app web
+    parser.add_argument('--threshold', type=float, default=0.45, help='Umbral de similitud para aceptar respuesta')
     args = parser.parse_args()
 
     emb_path = Path(args.emb)
@@ -40,16 +45,20 @@ def main():
     model = SentenceTransformer(args.model)
     meta = load_metadata(meta_path)
 
-    index = search_engine.build_index(embeddings)
+    # Instanciar SemanticSearcher
+    searcher = search_engine.SemanticSearcher(model, embeddings, meta)
 
     def answer(query: str):
-        q_emb = model.encode([query], convert_to_numpy=True)[0]
-        results = search_engine.search(index, q_emb, top_k=args.top_k)
-        # results: list of (idx, score)
+        # Usar SemanticSearcher
+        results = searcher.search(query, top_k=args.top_k)
+        
         if not results:
             print('Lo siento, no encontré información relevante sobre eso en el libro.')
             return
-        top_idx, top_score = results[0]
+            
+        top_result = results[0]
+        top_score = top_result['score']
+        
         if top_score < args.threshold:
             print('Lo siento, no encontré información relevante sobre eso en el libro.')
             return
