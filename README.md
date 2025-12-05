@@ -3,7 +3,7 @@ Sistema completo de búsqueda semántica local sobre un PDF (embeddings + búsqu
 
 Resumen rápido
 - Extrae texto desde `Data/FUNDAMENTO+DE+LA+IA+volumen+I.pdf`.
-- Fragmenta el texto en `Data/chunks.jsonl`.
+- **Nuevo:** Fragmenta el texto usando **Chunking Semántico** (por secciones) en `Data/chunks.jsonl`.
 - Genera embeddings en `Data/embeddings.npz` usando `sentence-transformers`.
 - Sirve una interfaz web con Flask en `http://127.0.0.1:5000` (modo chat).
 
@@ -37,9 +37,24 @@ pip install -r requirements.txt
 
 Si ya tienes `Data/chunks.jsonl` y `Data/embeddings.npz`, puedes saltarte este paso.
 
-```powershell
+**Importante:** El script `chunk_text.py` ahora incluye limpieza avanzada (separación de autores/dedicatoria y corrección de palabras pegadas).
+
+# 1. Extraer texto del PDF
 & ".venv\Scripts\python.exe" scripts\extract_pdf.py --pdf "Data/FUNDAMENTO+DE+LA+IA+volumen+I.pdf"
-& ".venv\Scripts\python.exe" scripts\chunk_text.py --input "Data/FUNDAMENTO+DE+LA+IA+volumen+I.txt" --max-chars 500 --overlap 120
+
+# 2. Limpiar texto (opcional, chunk_text ya hace limpieza semántica)
+& ".venv\Scripts\python.exe" scripts\clean_text.py --input "Data/FUNDAMENTO+DE+LA+IA+volumen+I.txt"
+
+# 3. Corregir palabras partidas (Importante para calidad)
+& ".venv\Scripts\python.exe" scripts\fix_word_breaks.py
+
+# 4. Correcciones finales manuales
+& ".venv\Scripts\python.exe" scripts\final_fix.py
+
+# 5. Generar Chunks Semánticos (Mejorado)
+& ".venv\Scripts\python.exe" scripts\chunk_text.py --input "Data/FUNDAMENTO+DE+LA+IA+volumen+I_clean.txt"
+
+# 6. Generar Embeddings
 & ".venv\Scripts\python.exe" scripts\generate_embeddings.py --chunks "Data/chunks.jsonl"
 ```
 
@@ -50,7 +65,7 @@ Si ya tienes `Data/chunks.jsonl` y `Data/embeddings.npz`, puedes saltarte este p
 ```
 
 Abre el navegador en `http://127.0.0.1:5000` y escribe tu pregunta. Esta versión del chat NO expone controles
-de `top_k` ni `threshold` y usa valores fijos seguros (Top K = 3, umbral = 0.60), estilo ChatGPT.
+- **Nota:** Esta versión usa un umbral de similitud optimizado (`0.45`) para asegurar respuestas relevantes.
 
 6) Uso por línea de comandos (alternativa)
 
@@ -75,15 +90,18 @@ Estructura de scripts (rápida)
 ```
 scripts/
 ├─ extract_pdf.py        # Extrae texto desde el PDF
-├─ clean_text.py         # Limpieza opcional del texto extraído
-├─ chunk_text.py         # Fragmenta el texto en chunks
+├─ clean_text.py         # Limpieza básica del texto
+├─ fix_word_breaks.py    # Une palabras partidas por saltos de línea
+├─ final_fix.py          # Correcciones manuales específicas
+├─ chunk_text.py         # Chunking Semántico + Limpieza Avanzada (autores, palabras pegadas)
 ├─ generate_embeddings.py# Genera embeddings (sentence-transformers)
-├─ search_engine.py      # Index / búsqueda (FAISS o fallback numpy)
+├─ search_engine.py      # Motor de búsqueda (Clase SemanticSearcher)
 ├─ chat_cli.py           # CLI interactivo / --ask
-└─ app_flask.py          # Servidor web (chat, Top K y umbral fijos)
+├─ app_flask_fixed.py    # Servidor web (chat optimizado, umbral 0.45)
+└─ app_streamlit.py      # Interfaz Streamlit (opcional)
 ```
-
 Notas y solución de problemas
+- **Chatbot no responde:** Asegúrate de estar usando `app_flask_fixed.py` que tiene el umbral corregido.
 - Si al instalar `streamlit` falla, es normal en Windows si falta CMake/Visual Studio: usamos Flask para evitar compilaciones nativas.
 - Asegúrate de activar `.venv` antes de ejecutar scripts para que los paquetes estén disponibles.
 - Si el servidor devuelve "no tengo información", intenta reformular la pregunta o revisar `Data/chunks.jsonl`.
