@@ -1,0 +1,2512 @@
+Información de Autores: Patricio Xavier Moreno Vallejo, Gisel Katerine Bastidas Guacho, Patricio Rene Moreno Costales
+
+Dedicatoria: A los nin@s: Leonel Robayo Moreno, Victoria Robayo Moreno Y Benjamín Moreno Bastidas. A quienes inspiraron esta obra: Peter Norving, Stuart Russel, Brian Yu y Hugo Banda
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+XX INTRODUCCIÓN  
+La inteligencia artificial se encarga de representar las diferentes formas de 
+conocimiento que posee el ser humano. Sus herramientas son la abstracción y la 
+inferencia que le permiten crear sistemas de computación no convencionales los cuales 
+son capaces de aprender nuevas tareas en base a la información proporcionada y tomar 
+decisiones en entornos diversos en los cuales debe actuar.  
+La base de la inteligencia artificial se encuentra en el influyente artículo de Alan 
+Turing, "Computing Machinery and Intelligence", el cual sostiene que las máquinas 
+deben considerarse inteligentes si pueden comportarse como humanos.  
+Este libro, está dividido en cuatro capítulos, en los cuales se explora los 
+fundamentos y usos de la inteligencia artificial. El primer capítulo profundiza en los 
+conceptos básicos de la inteligencia artificial. Analiza su evolución desde la década de 
+1950  y se examina cómo otras disciplinas han ayudado para su desarrollo; tales como las 
+matemáticas, filosofía, psicología, lingüística y ciencia de la computación. Se destaca el 
+impacto de la inteligencia artificial en numerosos sectores como la ciencia, inge niería, 
+empresas, medicina y planificación estratégica.  
+Además, se trata sobre el concepto de agentes inteligentes, se explora sus diseños, 
+analizando su efectividad, identificando varias arquitecturas de programas para agentes. 
+Se busca resolver problemas mediante el razonamiento basado en el conocimiento y su  
+representación desde la perspectiva de la inteligencia simbólica.  
+La lógica es tratada en el capítulo II, constituye una técnica para la representación 
+del conocimiento utilizando proposiciones y operadores lógicos. Mediante las cláusulas 
+de Horn se representa el conocimiento, del cual, se parte para poder razonar y lueg o 
+ejecutar decisiones inteligentes.  
+El Capítulo III, está relacionado a las búsquedas, que constituyen estrategias  
+esenciales en la inteligencia artificial para alcanzar metas específicas. Se explora tanto las 
+formas de búsquedas no informadas como las informadas, destacando sus diferencias y 
+aplicaciones. También se aborda los conceptos de optimización y árboles de d ecisión.  
+Este libro está diseñado para ofrecerles a ustedes estimados lectores  una sólida 
+comprensión de los fundamentos de la inteligencia artificial. Nuestro objetivo es 
+animarlos a que indaguen el potencial que posee la inteligencia artificial y contribuir a su 
+desarrollo.
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+1 CAPITULO 1 
+1 EXPLORANDO LA  INTELIGENCIA ARTIFICIAL  
+A la pregunta ¿qué es la inteligencia? la respuesta constituye que es la capacidad 
+de establecer relaciones, las cuales se manifiestan en los seres humanos a través del 
+pensamiento y la parte intelectual, y en los animales de manera puramente sensorial por 
+medio de los sentidos  (Artasanchez & Joshi, 2020) . Los humanos tenemos múltiples 
+aspectos que son parte de la inteligencia, como la capacidad de comunicación, 
+aprendizaje, razonamiento abstracto y resolución de problemas, mientras en los animales 
+la inteligencia está relacionado a poderse adaptar al medi o ambiente, manifestándose 
+como la capacidad que poseen de la percepción, memoria y toma de decisiones. Entre los 
+humanos y los animales compartimos rasgos básicos de inteligencia como la conciencia 
+del entorno y la habilidad para responder a estímulos  (McCarthy, 1956) . 
+La reflexión simbólica y de autorreflexión nos permite trascender el mundo 
+tangible y sensorial, crear cultura y tecnología, ganar experiencia y entender 
+conceptualmente el mundo que nos rodea de forma objetiva. La aplicación del 
+conocimiento es útil en el  análisis y resolución de problemas, en el razonamiento durante 
+la toma de decisiones; fomenta la predisposición al descubrimiento, invención, 
+creatividad e innovación. La inteligencia permite a las personas afrontar situaciones 
+complejas de forma oportuna , rápida y razonada, y tener la capacidad de predecir el 
+desarrollo y los cambios en el entorno que nos rodea.  
+El año 1950 marca el inicio formal de la inteligencia artificial, debido a que fue 
+entonces cuando se buscó dotar a las máquinas de recursos para resolver problemas de 
+manera autónoma, sin depender del apoyo humano.  
+Si bien la noción de máquina ha estado presente durante muchos años, fue Alan 
+Turing quien sentó las bases de la inteligencia artificial a finales de la Segunda Guerra 
+Mundial, en particular al estudiar científicamente las máquinas inteligentes. Turing hab ía 
+estado trabajando en la teoría de la computabilidad desde la década de 1930 y desarrolló 
+una de las primeras computadoras electromecánicas , se le recuerda por haber desarrollado 
+una máquina para descifrar códigos llamada "bombe" en Bletchley Park, Reino Unido, 
+que descifraba mensajes encriptados con la máquina alemana Enigma . En octubre de 
+1950, mientras trabajaba en la Universidad de Manchester publicó su artículo "Computing 
+Machinery and Intelligence"  en la revista Mind (Oxford University Press) , donde 
+
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+2 introdujo la prueba de Turing, el aprendizaje autónomo, los algoritmos genéticos y el 
+aprendizaje por refuerzo , sentando las bases conceptuales para que los científicos 
+comenzaran a explorar cómo crear programas capaces de resolver problemas ellos 
+mismos , sin la intervención humana. Este artículo es considerado el punto de partida que 
+impulsó la investigación formal en inteligencia artificial, dando origen a una nueva 
+disciplina dedicada a replicar la inteligencia humana en las máquinas. El legado de Turing 
+ha in spirado décadas de avances en aprendizaje automático, procesamiento de lenguaje 
+natural y otros campos clave de la IA.  
+En 1956, el informático John McCarthy (1927 -2011) acuñó 
+el término "Inteligencia Artificial" y  organizó el influyente 
+proyecto de investigación  Dartmouth Summer Research 
+Project on Artificial Intelligence, en el que participaron 
+varios científicos estadounidenses de matemáticas,  
+psicología,  ciencias de la computación y teoría de la 
+información  como Marvin Minsky, Allen Newell, Arthur 
+Samuel y Herbert Simon . En aquella época, las 
+computadoras se utilizaban para tareas aritméticas  con 
+herramientas de programación muy primitivas. El entusiasmo y esfuerzo pionero de 
+McCarthy y sus colegas en Dartmouth sentaron las bases conceptuales y metodológicas 
+para el nacimiento de la IA como campo formal. Su trabajo en esas primitivas condiciones 
+informáticas es digno de reconocimiento por imp ulsar una disciplina que décadas después 
+tendría aplicaciones transformadoras. McCarthy se refiere a esa época como la era de 
+"¡Mira mamá, ahora sin manos!" .  
+Desde sus inicios, la Inteligencia Artificial (IA) ha tenido como objetivo replicar 
+y ampliar las capacidades humanas mediante la imitación y expansión de la inteligencia 
+humana mediante medios y técnicas artificiales. Para lograr este propósito, la IA se ha 
+centrado en el desarrollo de mod elos computacionales que abordan el comportamiento 
+inteligente. Su enfoque se centra en la creación de sistemas informáticos capaces de 
+realizar actividades como la percepción, el razonamiento, el aprendizaje, la asociación, la 
+toma de decisiones y la reso lución de problemas complejos.   
+El progreso que se ha alcanzado en la actualidad en IA ha permitido automatizar 
+actividades que antes  solo los expertos humanos podían realizar  debido a su complejidad  Figura 1.1 John  
+McCarthy  
+Fuente: Wikipedia  
+ 
+
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+3 o necesidad de l juicio  de un  experto , la IA ha redefiniendo lo que entendemos por 
+procesos cognitivos e inteligentes , hiendo más allá de las restricciones inherentes a la 
+biología humana  (Whitby, 2009) . 
+La Inteligencia Artificial representa una disciplina dentro de la informática que 
+busca construir máquinas capaces de funcionar de manera autónoma en entornos 
+complejos y en constante cambio , creando sistemas que sean capaces de adaptarse y 
+responder de manera efectiva a situaciones desafiantes.  
+1.1 Breve historia cronológica de la inteligencia artificial  
+En 1943, Warren McCulloch y Walter Pitts presentaron el primer modelo de red 
+neuronal artificial capaz de aprender y resolver funciones lógicas.  Durante la década de 
+1950, la investigación en inteligencia artificial se enfocó principalmente en los juegos. 
+En 1951, Minsky y Edmonds construyeron el primer computador basado en una red 
+neuronal llamado SNARC. En 1956, Arthur Samuel desarrolló el primer  programa 
+heurístico de juego con capacidad de aprendizaje. Ese mismo año, Allen Newell, Herbert 
+Simon y Cliff Sha w inventaron el programa heurístico llamado Logic Theorist, que 
+resolvió correctamente 38 de los primeros 52 teoremas del Principia Mathematica. Este 
+trabajo marcó el inicio de la investigación en psicología cognitiva utilizando ordenadores.  
+En 1957, Noam Chomsky presentó su obra "Estructuras Sintácticas", destacando 
+la importancia de la sintaxis en la investigación del lenguaje formal  (Chomsky, 2004) . En 
+1958, John McCarthy inventó el lenguaje Lisp, una herramienta utilizada  para la 
+investigación en inteligencia artificial que podía procesar tanto valores numéricos como 
+símbolos  (McCarthy, 1960) . McCarthy también fue pionero en el desarrollo del concepto 
+de tiempo compartido  (Barski, 2010) . 
+A principios de la década de 1960, la investigación en inteligencia artificial se 
+centró principalmente en algoritmos de búsqueda y resolución de problemas generales. 
+Allen Newell, Herbert Simon y Cliff Shaw desarrollaron un programa llamado GPS 
+(General P roblem Solver), que era un sistema definido por objetos y operadores que se 
+aplicaban a dichos objetos. GPS pudo resolver problemas como las Torres de Hanoi. El 
+sistema utilizaba reglas heurísticas para aprender a partir de sus propios descubrimientos 
+y seguía un enfoque similar al de los humanos para resolver problemas, estableciendo un 
+plan, aplicando axiomas y reglas, y analizando medios y fines para modificar la resolución 
+del problema hasta alcanzar el objetivo.  
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+4 En 1961, Marvin Minsky publicó el artículo "Pasos hacia la Inteligencia 
+Artificial", estableciendo una terminología unificada para la investigación en inteligencia 
+artificial. En 1962, Frank Rosenblatt desarrolló el Perceptrón, una red neuronal utilizada 
+para el reconocimiento visual de patrones, aunque tuvo un impacto limitado en ese 
+momento.  
+En 1965, Edward Feigenbaum, Bruce Buchanan, Joshua Lederberg y Carl 
+Djerassi desarrollaron el primer sistema experto llamado DENDRAL, utilizado para el 
+análisis químico. Ese mismo año, Alan Robinson propuso el principio de la Resolución. 
+En 1968, Ross Quil lian introdujo la Red Semántica como una representación del 
+conocimiento. En 1969, se fundó la Conferencia Conjunta Internacional de Inteligencia 
+Artificial (IJCAI), que comenzó a celebrarse cada dos años y, a partir de 2016, se lleva a 
+cabo anualmente. La  revista Intelligence Artificial se publica bajo los auspicios de la 
+IJCAI desde 1970.   
+Después de la década de 1970, cuando las  redes neuronales  no cumplieron sus 
+promesas, época conocida como  el "AI hype", la financiación y las actividades de 
+investigación se redujeron drásticamente. Esto se conocio como  el "invierno de la IA".  A 
+principios de la década de 1970, el campo de la inteligencia artificial se enfocó  hacia el 
+estudio y la comprensión del lenguaje natural, así como a la representación avanzada del 
+conocimiento. Durante este período, se observaron progresos significativos en diversas 
+ramas de la IA, marcando un hito en su desarrollo.  
+En 1972, un avance fundamental fue la publicación de Terry Winograd sobre el 
+programa SHRDLU. Este programa se distinguió por su habilidad pionera en comprender 
+el lenguaje natural, específicamente el inglés, demostrando una comprensión profunda y 
+contextu al de las interacciones lingüísticas. SHRDLU no solo representó un logro técnico 
+importante, sino que también estableció un marco conceptual crítico para las 
+investigaciones futuras en la comprensión del lenguaje dentro del campo de la inteligencia 
+artific ial. Alain Colmerauer, en la Universidad de Marsella en Francia, desarrolló el 
+lenguaje de programación Prolog en el mismo año. Prolog se convirtió en un lenguaje 
+ampliamente utilizado en la programación de IA debido a su capacidad para trabajar con 
+la lógica y  el razonamiento  (Colmerauer & Roussel, 1996) . 
+En 1973, Roger Schank propuso la teoría de la dependencia conceptual, que se 
+centraba en la comprensión del lenguaje natural basada en el conocimiento y la 
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+5 representación semántica. Esta teoría contribuyó al avance en el procesamiento del 
+lenguaje natural en la IA.  
+Marvin Minsky publicó en 1974 la teoría del sistema de marco (A Framework for 
+Representing Knowledge), que fue una contribución importante en la representación del 
+conocimiento en la IA  (Baader, 2003) . Esta teoría posibilitó que las máquinas ordenaran 
+y estructuraran la información de una forma parecida a como lo hacen los seres humanos, 
+lo que simplificó el proceso de entendimiento y razonamiento  (Minsky & others, 1974) . 
+En ese mismo año, Edward Shortliffe desarrolló el sistema experto MYCIN como 
+parte de su tesis doctoral , implementado en Lisp, era capaz de diagnosticar trastornos en 
+la sangre y prescribir medicación correspondiente. Este sistema experto fue un hito en el 
+campo médico y demostró el potencial de la IA en el diagnóstico y tratamiento de 
+enfermedades  (Shortliffe, 1977) . Durante esta época, también se desarrollaron sistemas 
+expertos más avanzados, como el EURISKO, que tenía la capacidad de mejorar 
+automáticamente su conjunto de reglas heurísticas mediante la inducción.  
+Además, en los años 70 se lograron otros avances notables, como la 
+popularización de los algoritmos genéticos gracias al trabajo de John Holland, y la 
+resurrección de las redes neuronales con la creación del algoritmo de retropropagación 
+(backpropagation) por parte de Paul John Werbos. Este algoritmo sigue siendo 
+ampliamente utilizado en el aprendizaje supervisado para el entrenamiento de redes 
+neuronales  (Pham & Karaboga, 2012) . Asimismo, en esta década se construyó el primer 
+robot capaz de comprender el inglés y se desarrolló el primer vehículo autónomo, 
+marcando importantes avances en la interacción entre la IA y el mundo físico.  
+En 1977, Edward Feigenbaum publicó un paper titulado "El arte de la inteligencia 
+artificial: Temas y estudios de caso en ingeniería del conocimiento" en el quinto IJCAI. 
+En esta publicación dice que la ingeniería del conocimiento es el arte de aplicar los 
+principios y herramientas de la investigación en IA para abordar problemas de 
+aplicaciones difíciles que requieren conocimientos especializados para su solución  
+(Brachman & Levesque, 2004) . 
+En 1978, John P. McDermott introdujo un hito en el campo de la inteligencia 
+artificial con el desarrollo del sistema experto R1, marcando uno de los primeros éxitos 
+significativos en esta área. Compuesto por aproximadamente 2500 reglas, R1 fue 
+implementado  por DEC (Digital Equipment Corporation) para optimizar los procesos de 
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+6 pedidos de clientes, facilitando la selección de componentes adecuados para sistemas 
+informáticos. Este logro no solo demostró la utilidad práctica de los sistemas expertos, 
+sino que también abrió camino para su aplicación en el mundo empresarial.  
+Posteriormente, a mediados de la década de 1980, se produjeron avances 
+importantes en el algoritmo de aprendizaje por retroalimentación, originalmente 
+desarrollado por Bryson y Ho en 1969. Estas mejoras fueron importantes para el progreso 
+de los métodos de  aprendizaje automático, potenciando significativamente el rendimiento 
+y la eficiencia en el entrenamiento de sistemas basados en IA, lo que representó un avance 
+clave en la evolución de las técnicas de inteligencia artificial.  
+Durante los años 80, la Inteligencia Artificial se consolida como una ciencia en sí 
+misma. Judea Pearl en 1982 promueve la idea de los sistemas expertos normativos que se 
+basan en normas y principios de racionalidad formal, los cuales actúan racionalmente de 
+acuerdo con las leyes de la teoría de la decisión, sin intentar replicar directamente el 
+proceso de razonamiento humano. En 1986, Eric Horvitz y David Heckerman que han 
+realizado contribuciones significativas en áreas como el aprendizaje automático, la toma 
+de decisiones basada en datos y la bioinformática, respaldaron la idea de Pearl .  
+En ese mismo año, Rumelhart y McClelland publicaron aplicaciones de 
+algoritmos de aprendizaje en informática y psicología, lo que dio lugar al establecimiento 
+del enfoque del conexionismo basado en redes neuronales. Este enfoque revivió el interés 
+en las r edes neuronales como una herramienta poderosa para el aprendizaje automático y 
+estableció una nueva dirección en la investigación y desarrollo de IA.  
+En 1988, Judea Pearl publica el influyente texto "Probabilistic Reasoning in 
+Intelligent Systems", que incorpora conceptos de probabilidades y teoría de decisiones en 
+el campo de la inteligencia artificial. Este trabajo fue fundamental para avanzar en el uso 
+de modelos probabilísticos en la toma de decisiones en sistemas inteligentes.  
+En 1995, Russell y Norvig retomaron el trabajo en agentes totales, sistemas que 
+buscan encontrar soluciones a partir de información de entrada continua. En 1997, la 
+computadora Deep Blue de IBM venció al ajedrecista ruso Garry Kasparov considerado 
+uno de los mejores jugadores de ajedrez, este hecho situó a la inteligencia artificial como 
+protagonista en el ámbito tecnológico y demostró el potencial que tie ne al desafiar a 
+expertos humanos en juegos complejos.  
+En el año 2000, se construyó el robot ASIMO, que era capaz de desplazarse  en 
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+7 dos pies, dar la mano y contestar  a preguntas simples. En 2002, la empresa Cognitec  
+desarroll a el primer sistema comercial de reconocimiento facial  a partir de imágenes o 
+videos . En 200 6, se presentó  el prototipo del robot programable y autónomo NAO. En 
+2009, se lograron  desarrollar robots sociales que son  capaces de detectar emociones e 
+interactuar con niños autistas.   
+A partir  del 2010 hasta la actualidad, se ha desarrollado el aprendizaje profundo 
+(DL Deep Learning ), que es un tipo especial de red neuronal que tiene más de una capa 
+oculta. Esto solo es posible con el aumento de la potencia informática, especialmente de 
+las unidades de procesamiento gráfico (GPU) y algoritmos mejorados. Hasta ahora, el DL 
+ha superado  muchos otros algoritmos en un gran conjunto de datos.  
+En 2014, se produjo un acontecimiento importante  en el campo de la inteligencia 
+artificial cuando el chatbot Eugene Goostman logró superar el test de Turing, considerado 
+un indicador crítico en la evaluación de la capacidad de las máquinas para imitar la 
+inteligencia humana en el diálogo. Este logro no solo demostró avances significativos en 
+el desarrollo de sistemas de conversación automatizados, sino que también abrió un 
+debate sobre la complejidad y la verosimilitud de las interacciones entre humanos y 
+máquinas, marcando un punto de referencia en la historia de la inteligencia artificial.  
+En el año 2016, AlphaGo, un programa de IA creado por DeepMind  Technologies, 
+alcanzó notoriedad mundial al vencer a Lee Sedol, un campeón global en Go, un 
+milenario y desafiante juego de estrategia chino caracterizado por su alta complejidad y 
+las numerosas posibilidades que ofrece cada partida. Este logro marcó un p unto de 
+inflexión, generando un renovado interés y avances significativos en el ámbito de la 
+inteligencia artificial, evidenciando así su capacidad para abordar tareas de gran 
+complejidad y para la toma de decisiones estratégicas.  
+Un hito importante en la intersección de la inteligencia artificial y la biología se 
+alcanzó en 2020 gracias a DeepMind, los creadores de AlphaGo. Desarrollaron 
+AlphaFold, una versión mejorada de su sistema de IA, que logró descifrar un desafío que 
+había p erplejado a los biólogos por más de cinco décadas: el plegamiento de proteínas. 
+Este fenómeno, en el que las proteínas obtienen su forma tridimensional específica, es 
+importante para comprender su función dentro del organismo. Este avance es 
+fundamental, d ebido a que desentraña cómo las células operan y cómo se manifiestan 
+diversas enfermedades a nivel molecular, debido a la extraordinaria complejidad de este 
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+8 proceso.  
+A partir del 2021, los avances  en inteligencia artificial ha n sido impresionante s, 
+transformando diversos sectores de manera significativa. Un claro ejemplo es el modelo 
+GPT de OpenAI, que ha marcado un antes y un después en la forma en que las máquinas 
+entienden y generan lenguaje, siendo útil en una variedad de aplicaciones que inclu yen 
+desde la generación automatizada de contenido hasta soporte en servicios al cliente. Por 
+otro lado, los modelos como BERT, desarrollados por Google, han revolucionado la 
+manera en que se procesa el lenguaje en búsquedas en línea y otras aplicaciones, logrando 
+una mayor precisión y relevancia en las respuestas brindadas. IBM Watson Health ha 
+transformado el sector médico con su capacidad para analizar extensos volúmenes de 
+datos médicos, contribuyendo a diagnósticos más acertados y tratamientos 
+personalizados.  
+La empresa Boston Dynamics ha sobresalido con sus robots Atlas y Spot, que se 
+han convertido en herramientas importantes  para tareas de inspección y rescate, así como 
+en aplicaciones industriales, demostrando la evolución y adaptabilidad de la robótica. 
+Hugging Face, ha permitido la accesibilidad al  aprendizaje profundo y proce samiento del 
+lenguaje natural a un público más amplio . En el terreno creativo, proyectos como AIVA 
+(Artificial Intelligence Virtual Artist) están trabajando  en la composición musical 
+mediante la inteligencia artificial  y DeepArt explora nuevas posibilidades en el arte visual 
+a través de la tecnología de IA.  Google AI for Earth está utilizando  la inteligencia artificial 
+para el análisis de datos medioambientales , en la búsqueda de soluciones sostenibles, que 
+abord en los retos más críticos del cambio climático.  
+El campo de la inteligencia artificial se suele confund ir con la ciencia de datos, el 
+big data y la minería de datos , pero en realidad representan disciplinas di ferentes . La 
+ciencia de datos se enfoca principalmente en la manipulación y el análisis de datos, 
+incluyendo el manejo de grandes volúmenes de datos  (big data)  y la minería de datos ; de 
+forma  frecuente  emplea técnicas de aprendizaje automático  (Machine Learning)  y 
+aprendizaje profundo  (Deep Learing)  para el procesamiento de datos.  
+La transformación digital ha generado una inmensa cantidad de datos, los cuales 
+provienen de diversas fuentes, al no poder ser analizados de manera eficiente con las 
+herramientas y algoritmos tradicionales de bases de datos; la inteligencia artificial, el big 
+data y la minería de datos han desarrollo algoritmos sofisticados ( algoritmos de 
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+9 aprendizaje automático, algoritmos de clasificación y regresión, algoritmos de 
+agrupamiento y algoritmos de minería de datos), que posibilitan a las empresas tomar 
+decisiones basadas en datos y brindar a los usuarios acceso a información relevante de 
+maner a rápida y cómoda en sus actividades diarias.  
+Google Search y Google Maps proporcionan resultados de búsqueda relevantes y 
+sugerencias de navegación personalizadas comparado con productos similares, Spotify 
+recomienda música que se ajuste a los gustos y preferencias del usuario y Netflix emplea 
+la IA para sugerir películas y series que probablemente interesen al usuario, basándose en 
+sus visualizaciones anteriores y preferencias. Todas estas plataformas populares 
+incorporan algoritmos avanzados de inteligencia artificial para realizar su trabajo.  
+Al usar uno de los siguientes asistentes personales, Alexa de Amazon, Siri de 
+iPhone, Cortana de Microsoft, Bixby de Samsung o Google Assistant, observamos que 
+entiende lo que hablamos, ejecutando de forma eficiente la tarea solicitada. Las redes 
+sociales como Facebook, Pinterest y Google Fotos, tienen incorporado el reconocimiento 
+facial, a través de técnicas sofisticadas de visión por computadora que mejora la 
+interactividad y seguridad de sus usuarios.  
+En el ámbito empresarial, la robótica, los sistemas expertos y el aprendizaje 
+automático  están transformando los procesos y brindando oportunidades de innovación 
+en los negocios.  
+Actualmente, se están desarrollando herramientas y plataformas de ciencia de 
+datos que permiten la aplicación de algoritmos de inteligencia artificial. Algunos 
+ejemplos de estas plataformas incluyen RapidMiner, Anaconda y Python.  
+Los líderes de la industria tecnológica, como Google, Microsoft, Meta Platforms , 
+Amazon , Oracle  y OpenAI están profundamente comprometidos con la inteligencia 
+artificial. Esta tecnología se está integrando profundamente en diversos aspectos de 
+nuestra vida cotidiana, influyendo en nuestras decisiones y siendo importante en las 
+estrategias empresariales, la salud pública, la seguridad y las finanzas. En el futuro 
+debemos esp erar un desarrollo significativo en aplicaciones web, videojuegos y robótica 
+autónoma , veremos cada vez más vehículos autónomos circulando por las calles, robots 
+sociales ayudando a las personas en su vida diaria y exploradores planetarios llegando a 
+lugares más lejanos en el universo. Asimismo, las aplicaciones en el ámbito 
+medioambiental  y el ahorro energético serán de gran importancia, al igual que en los 
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+10 campos de la economía, la sociología y el arte  (Lee & Qiufan, 2021) . 
+ 
+1.2 Contribuciones  de las ciencias a la inteligencia artificial  
+Varias ciencias han aportado al desarrollo de la Inteligencia Artificial , entre ellas 
+se tiene:  
+La filosofía  ha planteado diversas  teorías sobre el razonamiento y el aprendizaje, 
+concibiendo a  la mente como una máquina que funciona a partir del conocimiento , 
+codificado en un  lenguaje interno  y al considerar que el pensamiento sirve para  determinar 
+cuál es la acción correcta que se debe emprender  (McCarthy, 1990) .  
+Un parte  relevante en el desarrollo del razonamiento deductivo es la lógica 
+silogística propuesta por el filósofo Aristóteles, considerada el primer sistema formal de 
+razonamiento deductivo , la cual establece reglas precisas para derivar conclusiones 
+válidas a partir de premisas , esto a contribuido  al desarrollo posterior de la lógica y ha 
+influido en los fundamentos de la inteligencia artificial.  
+Desde la perspectiva de la inteligencia artificial, se han explorado puntos de vista  
+más avanzados y sofisticados para comprender el razonamiento y el aprendizaje ; que  
+involucran el uso de algoritmos de aprendizaje automático, redes neuronales y técnicas 
+de procesamiento de lenguaje natural, permitiendo a las máquinas no solo realizar 
+razonamiento deductivo, sino también abordar problemas complejos de manera más 
+eficien te y aproximarse a la toma de decisiones basadas en datos y modelos de 
+conocimiento.  
+Las matemáticas son fundamentales en el desarrollo de teorías formales 
+relacionadas con la lógica, las probabilidades, la teoría de decisiones y la computación. 
+La lógica matemática permite tratar con declaraciones y razonamientos que pueden ser 
+verdaderos o falsos, mient ras que la teoría de probabilidades aborda situaciones de 
+incertidumbre y riesgo.  
+En el libro "Una investigación de las leyes del pensamiento" de George Boole se 
+encuentra el desarrollo del álgebra booleana que se ha convertido en una herramienta 
+esencial en la lógica digital y la computación para la representación de reglas básicas de 
+razonamiento en actividades mentales, permitiendo manipular datos y realizar 
+operaciones lógicas en las computadoras y otros dispositivos electrónicos.  
+Las matemáticas siguen siendo esenciales en el ámbito de la inteligencia artificial. 
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+11 Las redes neuronales y los algoritmos de aprendizaje automático son modelos 
+matemáticos que permiten a las máquinas aprender de los datos y realizar inferencias 
+complejas para tomar decisiones o realizar acciones basadas en la información procesada.  
+La teoría de la computación proporciona el marco teórico y los principios que 
+guían la creación y el funcionamiento de algoritmos que minimicen el uso de recursos, 
+tiempo de computación y memoria; mientras que los fundamentos matemáticos aportan 
+las herram ientas y técnicas necesarias para formular y resolver problemas de manera 
+lógica y precisa  (Domkin, 2021) . 
+La psicología  tiene gran importancia en el estudio y entendimiento de la mente 
+humana, al ser una ciencia, se enfoca en explorar y comprender los procesos cognitivos 
+(como el pensamiento, la memoria, la percepción y la toma de decisiones) y emocionales 
+(los sentimiento s y las emociones) que caracterizan el comportamiento humano.  
+La idea de que los humanos procesan información ha contribuido a modelar los 
+sistemas de inteligencia artificial, inspirándose en la forma en que los humanos pensamos 
+y tomamos decisiones. Los enfoques teóricos y conceptuales de la psicología sobre el 
+procesamiento del lenguaje natural, la percepción visual y la toma de decisiones, han 
+influido en el diseño de algoritmos y modelos utilizados en los sistemas de la inteligencia 
+artificial.  
+La IA no se centra exclusivamente en imitar la mente humana. También incorpora 
+elementos de matemáticas, estadística e informática, lo que permite a las máquinas 
+realizar tareas cognitivas específicas y tomar decisiones en diversos contextos, a veces de 
+manera diferente a como lo haría un ser humano. La lingüística  es importante  en la 
+inteligencia artificial al proporcionar teorías y herramientas para comprender la estructura 
+y el significado del lenguaje humano. El lenguaje es un componente fundamental de la 
+comunicación y su comprensión y generación son elementos esenciales en muchos 
+sistemas de in teligencia artificial.  
+La lingüística  es la ciencia del lenguaje que posee un enfoque sistemático para el 
+análisis de la gramática (estructura y reglas del lenguaje), semántica (significado de las 
+palabras y frases) y pragmática (uso del lenguaje en contextos específicos) del lenguaje. 
+El est udio detallado de las reglas y patrones lingüísticos, ha permitido los avances 
+tecnológicos en el campo de la inteligencia artificial y la computación, permitiendo a las 
+máquinas entender y generar lenguaje, así como para producir texto compr ensible para 
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+12 los humanos.  
+La colaboración entre la lingüística y la inteligencia artificial ha sido un factor 
+importante para el progreso del procesamiento del lenguaje natural (PLN), que permite a 
+las máquinas entender, interpretar y generar lenguaje humano de forma similar a cómo  lo 
+hacen las personas. Otras aplicaciones son la traducción automática; los chatbots, que 
+pueden interactuar en lenguaje natural con los usuarios; y los sistemas de diálogo, que 
+facilitan una comunicación fluida y natural con las máquinas.  
+La lingüística ha sido fundamental en la creación de recursos como bases de datos 
+léxicas (listas de palabras y sus significados), corpus textuales (grandes colecciones de 
+textos escritos o transcripciones de habla) y modelos de conocimiento lingüístico. Estos 
+recursos son indispensables para entrenar y mejorar los sistemas de IA, proporcionando 
+la información necesaria para que las máquinas aprendan y entiendan el lenguaje humano.  
+La ciencia de la computación  proporciona los lenguajes de programación que 
+son el medio por el cual se escriben y se ejecutan los algoritmos de inteligencia artificial 
+y los marcos de desarrollo, que ofrecen estructuras y librerías predefinidas para facilitar 
+la creación de aplicacio nes de inteligencia artificial.  
+Alan Turing es una figura fundamental en el origen de la ciencia de la 
+computación debido a sus contribuciones innovadoras y su visión de lo que podrían ser 
+las computadoras y su funcionamiento. Sus teorías y modelos proporcionan el marco 
+conceptual para c omprender cómo las máquinas pueden no solo procesar información, 
+sino también realizar tareas que requieren algún nivel de inteligencia, como el 
+aprendizaje, el razonamiento y la adaptación.  
+En el ámbito de la IA, los programas y algoritmos son fundamentales para 
+capacitar a las máquinas para que realicen tareas consideradas inteligentes como la 
+resolución de problemas hasta la imitación de comportamientos humanos como el 
+aprendizaje y la toma  de decisiones. Los programas demandan una cantidad significativa 
+de recursos computacionales, incluyendo un alto poder de procesamiento y una gran 
+capacidad de memoria. La eficiencia de un algoritmo se refiere a cuán bien utiliza los 
+recursos disponibles (como tiempo de cómputo y memoria) para lograr sus objetivos  
+La ciencia de la computación ha avanzado en el procesamiento de datos 
+(capacidad de manejar y transformar datos en información útil), el aprendizaje automático 
+(sistemas capaces de aprender y mejorar a partir de la experiencia), la optimización de 
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+13 algoritmos (velocidad y uso de recursos) y la gestión de grandes volúmenes de 
+información (procesar y analizar grandes conjuntos de datos).  
+La neurociencia se centra en entender el funcionamiento del cerebro humano a 
+niveles: molecular, celular y de comportamiento. Este estudio permite desarrollar 
+modelos y principios que son aplicados en la creación de inteligencia artificial. También, 
+proporciona informació n valiosa sobre cómo se procesa el lenguaje en el cerebro humano, 
+que es utilizado en el procesamiento de lenguaje natural dentro de la inteligencia artificial.  
+La neurociencia ha permitido obtener un conocimiento más profundo de la 
+funcionalidad cerebral y de los procesos de procesamiento de información dentro del 
+cerebro. Este conocimiento es valioso para los expertos en inteligencia artificial, debido 
+a que les  ofrece inspiración basada en los mecanismos y procesos cerebrales reales para 
+desarrollar algoritmos y modelos en el campo del aprendizaje automático.  
+La neurociencia ha revelado principios fundamentales sobre cómo funcionan las 
+redes neuronales en el cerebro y cómo este tiene la capacidad de cambiar y adaptarse a 
+través del aprendizaje (plasticidad cerebral). Estos descubrimientos son importantes para 
+el diseño de algoritmos en el aprendizaje automático, especialmente en el desarrollo de 
+redes neuronales artificiales. Estos algoritmos buscan imitar los principios biológicos del 
+cerebro humano para mejorar la eficiencia y capacidad de procesamiento en la 
+inteligencia artificial.  
+La ciencia cognitiva  es decisiva en el estudio de las actividades mentales 
+humanas, como la percepción, el aprendizaje, la memoria, el pensamiento y la conciencia. 
+Esta disciplina integra conocimientos de varias áreas de estudio como la psicología que 
+contribuye con la compre nsión del comportamiento y los procesos mentales; la lingüística 
+que aporta conocimientos sobre el lenguaje y su relación con el pensamiento; la filosofía 
+que ofrece marcos conceptuales y éticos; la neurociencia que brinda información s obre la 
+estructura y función del cerebro; y la inteligencia artificial que ayuda a modelar y simular 
+procesos cognitivos. Juntas, estas disciplinas permiten una comprensión más completa de 
+cómo se desarrollan y trabajan  las actividades mentales en los seres humanos.  
+ La investigación en ciencia cognitiva busca descubrir cómo funcionan 
+internamente los procesos a través de los cuales los seres humanos reciben, procesan y 
+comprenden la información que obtienen de su entorno para desarrollar máquinas que 
+puedan procesar e interpretar información sensorial (como imágenes, sonidos, texturas) 
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+14 de manera similar a cómo lo hace un ser humano.  
+La investigación en ciencia cognitiva también ha explorado el pensamiento 
+humano, incluyendo la resolución de problemas, la toma de decisiones y el razonamiento. 
+Estos procesos cognitivos han sido estudiados y modelados para desarrollar algoritmos y 
+sistem as de inteligencia artificial capaces de realizar tareas complejas de manera lógica y 
+eficiente.  
+Los descubrimientos, que detallan los procesos mediante los cuales los humanos 
+adquieren conocimientos (aprendizaje), los retienen (memoria) y los recuperan cuando es 
+necesario, proporcionan una base sólida para la creación de modelos sofisticados en el 
+campo del aprendizaje automático.  
+Se ha explorado el pensamiento humano en la búsqueda de entender cómo los 
+humanos abordan y solucionan situaciones complejas, y cómo procesan información para 
+llegar a conclusiones con el objetivo de crear máquinas con inteligencia artificial que 
+imiten el  comportamiento humano.  
+Comprender qué es la conciencia y cómo funciona sigue siendo un desafío en 
+búsqueda de entender en profundidad la mente humana, a pesar de estos esfuerzos que se 
+han hecho en la inteligencia artificial, simular completamente la conciencia humana es 
+un desa fío significativo y aún no se ha logrado. Los modelos actuales pueden aproximarse 
+a ciertos aspectos de la conciencia, pero la experiencia subjetiva y la autoconciencia plena 
+son elementos particularmente difíciles de replicar en una máquina  (McDermott, 2007) . 
+1.3  Areas de investigación de la inteligencia artificial  
+La inteligencia artificial (IA) representa un cambio significativo y un avance 
+considerable en el campo de la tecnología informática, muestra el progreso que ha tenido 
+en comparación con generaciones anteriores , que se centraban principalmente en realizar 
+cálculos numéricos (como los usados en aplicaciones científicas o comerciales), 
+actualmente la IA se orienta hacia tareas más complejas y abstractas, que incluyen la 
+manipulación simbólica (trabajar con informa ción representada mediante símbolos, como 
+en el procesamiento del lenguaje) y la emulación de comportamientos inteligentes 
+(intentar replicar o simular formas de intel igencia similares a las humanas, como el 
+reconocimiento de patrones, la toma de decisiones, y el aprendizaje).  
+Las áreas de la IA en las cuales se está investigando en la actualidad son 
+presentadas en la figura 1.2, se han agrupado partiendo de las formas de representación 
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+15 del conocimiento en la inteligencia artificial que son: la representación simbólica y la 
+representación no simbólica y también se puede observar combinadas de las dos 
+representaciones.  
+La representación simbólica es un método para modelar y manipular el 
+conocimiento utilizando símbolos (palabras, números o iconos) que se eligen y se utilizan 
+de manera estructurada y lógica. Por ejemplo, en un sistema simbólico, una palabra como 
+"elefante " = “mamífero paquidermo de gran tamaño”  es un símbolo que representa un 
+concepto específico en el mundo real.  
+La representación no simbólica,  en lugar de usar reglas específicas y símbolos 
+definidos, utiliza patrones y modelos matemáticos o estadísticos que aprenden de los 
+ejemplos y datos.  Por ejemplo, en una red neuronal utilizada para el reconocimiento de 
+imágenes, no hay un símbolo específico para "elefante", sino que el conocimiento sobre 
+qué constituyen estos  animales se aprende  (de muchas fotos de elefantes)  y se almacena 
+en los patrones de conexión entre las neuronas de la red.  
+ 
+ 
+Figura 1.2 Áreas  de investigación de la inteligencia artificial  
+Elaborado por los Autores  
+Se presenta una breve explicación de cada una de las áreas den investigación en 
+inteligencia artificial:  
+Representación Simbólica:  
+1. Sistemas Expertos:  Utilizan reglas para representar el conocimiento y la lógica 
+para deducir nuevas informaciones.  
+
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+16 2. Procesamiento del Lenguaje Natural (PLN): Se enfoca en la comprensión y 
+generación de lenguaje humano mediante reglas gramaticales y semánticas.  
+3. Robótica Cognitiva: Los robots son capaces de interpretar su entorno y reconocer 
+los objetos y situaciones que encuentran,  tienen la capacidad de interactuar 
+físicamente con su entorno, toma ndo o mov iendo  los objetos  (Franceschetti, 
+2018) .  
+4. Razonamiento Automatizado: Las máquinas o sistemas informáticos son capaces 
+de pensar y llegar a conclusiones de manera similar a como lo haría un ser 
+humano , proceso que lo realiza n de manera automática y estructurada mediante 
+un programa o algoritmo . 
+5. Interacción Hombre -Máquina: Es el estudio y la  parte  práctica de cómo las 
+personas se comunican o interactúan con las computadoras y otros dispositivos 
+tecnológicos, buscando que sea fluido y sencillo como hablar o interactuar con 
+otro ser humano.  
+6. Ontologías y Representación del Conocimiento: Se trata de crear modelos que 
+puedan representar el conocimiento de manera que las computadoras lo entiendan 
+y lo manejen eficientemente, utilizando entidades, atributos, y relaciones 
+simbólicas  (Poole & Mackworth, 2010) . 
+Representación No -Simbólica : 
+1. Aprendizaje Automático: Se tienen los siguientes tipos  de aprendizaje.  
+a) Aprendizaje Supervisado: Estos  modelos  de inteligencia artificial  se utilizan para 
+realizar tareas de clasificación o regresión,  se entrena n usando un conjunto de 
+datos que han sido  etiquetados  con anterioridad  (Xiao, 2022) . 
+b) Aprendizaje No Supervisado: Los modelos trabajan identificando patrones en  
+datos que no han sido  etiquetados, para locual usan  técnicas  de grupamiento o 
+reducción de dimensionalidad . 
+c) Aprendizaje por Refuerzo: Son modelos  (agentes)  que aprenden a tomar 
+decisiones mediante experimentación e interacción con el medio ambiente , 
+recib en recompensas o penalizaciones en función de las acciones que realizan.  
+2. Redes Neuronales y Aprendizaje Profundo: Es un tipo de tecnología que intenta 
+imitar la forma en que el cerebro humano procesa la información . Las redes 
+neuronales son sometidas a un  proceso llamado "entrenamiento", durante el cual 
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+17 la red ajusta sus parámetros internos (llamados "pesos  sinápticos ") para mejorar 
+su capacidad de realizar la tarea deseada  (Haykin, 2009) .  
+3. Visión por Computadora: Busca que las computadoras procesen y analicen el 
+contenido visual (imágenes, videos)  obtenido mediante cámaras y sensores  del 
+mundo que les rodea . 
+4. Procesamiento de Lenguaje Natural basado en Aprendizaje Automático: Usa 
+modelos  estadísticos y redes neuronales para el entendimiento , interpretación y  
+generación de lenguaje  humano de manera efectiva.  
+5. Sistemas de Recomendación: Son sistemas informáticos que se basan en 
+algoritmos de aprendizaje profundo y estan diseñados para sugerir 
+automáticamente productos, servicios, información o acciones a los usuarios.  
+6. Bioinformática y Análisis de Datos Biomédicos: Utiliza técnicas informáticas y 
+estadísticas para entender y analizar los datos. La bioinformática se centra en el 
+análisis de datos a nivel molecular, como los genes y proteínas, mientras que el 
+análisis de datos biomédicos incluye datos relacionados con la salud y la biología.  
+7. Análisis Predictivo y Minería de Datos: Son t écnicas que buscan patrones  (como 
+tendencias comunes o repetitivas) , correlaciones (relaciones entre diferentes 
+variables) y conocimientos a partir de grandes volúmenes de datos para predecir 
+tendencias o comportamientos futuros.  
+8. Integración de Conocimiento en Modelos de Aprendizaje Automático:  Se refiere 
+al proceso de aprovechar la información y estructuras que ya existen  he 
+incorporárlas en  los modelos de aprendizaje automático.  
+9. Simulación y Modelado Basado en Agentes: Se usa agentes autónomos para 
+simular comportamientos y sistemas complejos y dinámicos. Cada agente en el 
+modelo representa una entidad con su propio conjunto de características y reglas 
+de comportamiento. Esta técnica es útil en el campo de la inteligenci a artificial 
+distribuida, donde se busca comprender y replicar comportamientos colectivos o 
+de enjambre, como los observados en la naturaleza.  
+10. Robótica Basada en Aprendizaje Automático: Incorpora técnicas de aprendizaje 
+automático en la robótica para mejorar las capacidades de percepción y decisión 
+de los robots, especialmente en entornos que son dinámicos y no estructurados  
+(Franceschetti, 2018) . 
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+18 Representación Simbólica y Representación No -Simbólica:  
+1. Procesamiento del Lenguaje Natural (PLN) Híbrido:  Estudia cómo hacer que las 
+computadoras sean capaces de analizar, entender y generar lenguaje humano de 
+forma automática. Usa  métodos simbólicos  como el análisis sintáctico basado en 
+reglas gramaticales y la representación semántic a basad a en reglas . Combina con  
+métodos no simbólicos, como el aprendizaje profundo . Se emplean en la  
+traducción automática  entre idiomas , el análisis de sentimientos y la generación 
+de texto.   
+2. Sistemas Expertos Mejorados: Los sistemas expertos tradicionales, basados en 
+conocimiento simbólico y reglas, se pueden enriquecer con técnicas de 
+aprendizaje automático para manejar la incertidumbre , aprender patrones y 
+capturen excepciones al  manejar  grandes volúmenes de datos.   
+3. Robótica Cognitiva Avanzada: Los robots utilizan algoritmos de aprendizaje 
+profundo para interpretar lo que perciben a través de sus sensores  y están 
+equipados con sistemas que siguen reglas predefinidas para planificar sus acciones 
+y tomar decisiones  (Franceschetti, 2018) . Estos robots pueden manejar una 
+variedad de situaciones y tareas en diferentes entornos, realizando ajustes según 
+sea necesario  para adaptarse a cambios inesperados en su entorno . 
+4. Sistemas de Recomendación Híbridos: Combinan el análisis de patrones de 
+comportamiento de usuarios (aprendizaje no simbólico) con reglas basadas en 
+conocimiento específico del dominio ( aprendizaje simbólico) para proporcionar 
+recomendaciones más precisas y contextuales.  Son asistentes inteligentes que te 
+sugiere cosas basándose en lo que te gusta y en conocimientos específicos de un 
+área determinada.  
+5. Integración de Conocimiento en Aprendizaje Automático: Se utiliza en p royectos 
+que buscan integrar bases de conocimiento estructuradas (simbólicas) dentro de 
+modelos de aprendizaje automático (no simbólicos) para mejorar la interpretación 
+y generalización de los modelos.  
+6. Ontologías en Aprendizaje Automático: Se usa  ontologías y estructuras de 
+conocimiento simbólico para guiar y mejorar el proceso de aprendizaje en 
+modelos no simbólicos, especialmente en dominios específicos como la medicina 
+o la biología  (García Serrano, 2012) . 
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+19 7. Inteligencia Artificial Explicable (XAI): Busca desarrollar modelos de IA, 
+especialmente los basados en aprendizaje profundo, que puedan explicar sus 
+decisiones y procesos de una manera comprensible para los humanos, a menudo 
+integrando elementos simbólico s en la explicación de modelos no simbólicos.  
+1.4 Influencia significativa de la inteligencia artificial   
+La importancia de la inteligencia artificial radica en el hecho de que se relaciona 
+con la mayoría de campos de investigación a través de diferentes disciplinas tales como: 
+las ciencias de la ingeniería (ayuda a diseñar sistemas más eficientes y seguros), la 
+economía (permite analizar tendencias de mercado y predecir cambios económicos)   y la 
+medicina (contribuye al diagnóstico y tratamiento de enfermedades, e incluso en la 
+investigación de nuevos medicamentos), siendo usada la IA como un medio para hacer 
+frente a muy complicados y difíciles procesos de cómputo, así como a los problemas 
+cognitivos. Al ser la IA una de las principales corrientes de tratamiento de la información, 
+puede ahora ofrecer soluciones a los problemas utilizando los avances e innovacio nes 
+entre una amplia gama de sub -áreas que inducen el pensamiento y razonamiento en los 
+modelos y sistemas desarrollados.  
+Se espera que las empresas que utilizan aplicaciones de Inteligencia Artificial 
+mejoren la capacidad de analizar los datos a través de múltiples variables, puedan detectar 
+fraudes y gestionen de mejor manera las relaciones con los clientes para obtener una  
+ventaja competitiva.  
+Altos directivos de muchas empresas utilizan sistemas de planificación estratégica 
+basados en IA para tener una asistencia en funciones como: análisis de la competencia, el 
+despliegue de tecnología y la asignación de recursos. También se utilizan programas  para 
+ayudar en el diseño de la configuración de equipos, distribución de productos, 
+asesoramiento en el cumplimiento y evaluación de personal. La IA está contribuyendo en 
+gran medida en la organización, planificación de la gestión y control de las operaci ones, 
+y continuará haciéndolo con más frecuencia a medida que se refinan los programas.  
+La IA también es influyente en la ciencia y la ingeniería, las aplicaciones 
+desarrolladas se utilizan para organizar y manipular las cantidades cada vez mayores de 
+información disponibles para los científicos e ingenieros, se emplea en clasificaciones 
+biológicas, en la creación de circuitos semiconductores y componentes de automóviles. 
+La IA se utiliza en la difracción y análisis de imágenes, en las plantas de energía y en el 
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+20 diseño de las estaciones espaciales, uno de sus mayores usos es en la robótica.  
+Por la cantidad de habitantes que viven en el planeta tierra cada vez más se 
+necesita usar de forma eficiente los recursos materiales y humanos, para lo cual podemos 
+utilizar el poder que tienen las computadoras y la IA, en la agricultura para  controlar 
+plagas y manejar cultivos en forma más eficiente; en las fábricas en la realización de 
+montajes pelig rosos y actividades tediosas (labores de inspección y mantenimiento); en  
+medicina en el diagnóstico a pacientes, detectar pacientes que están en mayor riesgo de 
+complicaciones, supervisar la condición de los pacientes, descubrir sutiles interacciones 
+entre los medicamentos que ponen a los pacientes en riesgo de sufrir efectos secundarios 
+graves, administrar tratamientos y preparar estudios estadísticos; en el trabajo doméstico 
+asistir en la limpieza de la casa, preparación de alimentos, a brindar asesoría acerca de 
+dietas, compras, supervisión y gestión de consumo energético y seguridad del hogar; en 
+las escuelas apoyar en la formación de los estudiantes, especialmente en aquellas materias 
+consideradas complejas; colaborar con los humanos expertos en el aná lisis para la 
+solución de problemas difíciles o en el diseño de nuevos dispositivos.  
+Se ha convertido en algo común de nuestras vidas el uso del GPS (Global 
+Positioning System) para escoger la mejor ruta, recibir estados del tráfico, usar teléfonos 
+inteligentes que entienden nuestro lenguaje, asistentes inteligentes como Cortana de 
+Microso ft y Siri de Apple; la búsqueda inteligente que realiza el buscador  de Google y 
+Bing, el traductor y  lector de documentos de Google. Algoritmos inteligentes que detectan 
+los rostros mientras estamos tomando una foto con el celular y reconocen las caras de las 
+personas cuando se publican las fotos en Facebook. Los usuarios de Amazon reciben 
+recomendaciones sobre libros, los de Netflix sobre películas. Aceleración de las portátiles 
+al adivinar lo que se hará a continuación. Los coches inteligentes que se cond ucen a sí 
+mismos, que pueden enfrentar situaciones complicadas, que reconocen la voz para una 
+interacción natural, que están desarrollando BMW, Tesla, Google. La lucha contra el 
+spam (correo basura) a través de clasificadores bayesianos y otras técnicas pr obabilísticas 
+han mostrado su eficacia. Los militares están usando aviones no tripulados, drones y 
+robots para investigar en lugares peligrosos.  
+En la actualidad existe d ispositivos con IA que permiten que l a gente ciega  vea, 
+los sordos escuchen, y los discapacitados y ancianos puedan caminar, e incluso correr. 
+Las galaxias están siendo  exploradas en mutuo apoyo entre los astrónomos 
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+21 experimentados y las máquinas.  
+La presen cia de los métodos de Inteligencia artificial ha puesto a los seres 
+humanos a pensar en los riesgos potenciales de sus avances, piensan algunas personas 
+que los sistemas de IA se podrían convertir en superinteligentes y poner en peligro la 
+supervivencia de la humanidad, pero se tiene a la AAAI (Association for the 
+Advancement of Artificial Intelligence) que está encargada de incentivar el avance en la 
+ciencia y tecnología de la inteligencia artificial y promocionar su uso responsable . 
+Los errores de programación en software de inteligencia artificial deben ser 
+considerados, por lo que se requiere de la verificación y validación del software debido a 
+la creciente complejidad y el uso en funciones delicadas como en automóviles, robots 
+quirúrgicos y sistemas de armas.  Un desafío técnico es garantizar que los sistemas 
+integrados de forma automática a través de métodos estadísticos se comporten 
+correctamente en el proceso de aprendizaje automático. Otro desafío es garantizar el buen 
+comporta miento cuando un sistema de IA se encuentra con situaciones imprevistas. Los 
+vehículos automatizados, robots para el hogar, y los servicios inteligentes en la nube 
+deben funcionar bien, incluso cuando reciben insumos sorprendentes o confusos  (Lalanda 
+et al., 2013) . 
+Otro riesgo que está presente son los ciberataques a los cuales los programas de 
+IA son también vulnerables, y si se piensa en lo que podría suceder al estar los algoritmos 
+de IA encargados de tomar decisiones de alto poder. Por lo que se requiere la 
+inves tigación en seguridad cibernética para estar seguros que los algoritmos de IA y los 
+sistemas que se desarrollan basados en estos pueden sobrevivir los ataques cibernéticos a 
+gran escala.  
+Un aspecto importante de cualquier sistema de IA que interactúa con la gente es 
+que debe razonar sobre lo que las personas piensan en lugar de llevar a cabo los comandos 
+de manera literal, para juzgar si lo que se le pide que realice es normal o razonable para 
+la mayoría de la gente.  
+1.5 Turing y la Evaluación de la Inteligencia de las Máquinas   
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+22 Turing (1912 -1954) propuso la Máquina Niño, en la 
+que se crearía un agente inteligente básico y se sometería a un 
+curso de educación para proporcionarle conocimiento. En su 
+artículo de 1950, "Computing machinery and intelligence", 
+Turing (Figura 1.3) argumentó que si una máquina puede 
+actuar como un humano, entonces se puede considerar que es 
+inteligente  (Turing, 2009) . El Test de Turing se diseñó para 
+proporcionar una definición operacional y satisfactoria de 
+inteligencia, basada en la incapacidad de diferenciar entre entidades inteligentes 
+indiscutibles y seres humanos  (Floridi, 2023) . Según este test, un computador supera la 
+prueba si un evaluador humano no puede distinguir si las respuestas a una serie de 
+preguntas planteadas son de una persona o no.  
+La prueba  de Turing  tiene mucha importan cia en la investigación y el desarrollo 
+de la inteligencia artificial, debido a que permite realizar la evalua ción de  la capacidad de 
+una máquina de imitar el comportamiento humano. A continuación se indica los 
+requerimientos de la prueba de Turing:  
+El Procesamiento de Lenguaje Natural  (NLP  Natural Language Processing) 
+capacita  a las computadoras para comunicarse eficazmente en inglés  y otros  idiomas. Las 
+aplicaciones del NLP van mas allá de  la traducción automática, extendiéndose al 
+reconocimiento y comprensión del lenguaje humano, en búsqueda de que l as máquinas 
+pueden mantener  conversaciones que sean  indistinguible s de las que mantienen los 
+humanos . 
+La Representación del Conocimiento  permite poder almacenar lo que se conoce 
+o siente, la computadora debe ser capaz de almacenar y recuperar de forma eficiente la 
+información que va obteniendo e infiriendo autónomamente. En la actualidad se 
+investigan las técnicas de almacenamiento de información para que exista fácil 
+accesibilidad y sea utilizable por los sistemas inteligentes.   
+El Razonamiento automá tico utiliza la información almacenada para responder a 
+preguntas y extraer nuev as conclusiones,  esta temática se trata a través de los sistemas 
+expertos que buscan llegar a conclusiones lógicas a partir de hechos o premisas 
+introducidas inicialmente en el sistema; otra forma es a través de las redes probabilísticas 
+como las redes Bayesianas o de Mar kov que permiten realizar predicciones y llegar a Figura 1.3 Alan  Turing  
+Fuente: Elliott & Fry  
+ 
+
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+23 conclusiones aun cuando existe incertidumbre.  
+El Aprendizaje automá tico permite a  las máquinas adaptarse a nuevas 
+circunstancias, detectar y extrapolar patrones . Permite que las máquinas sean capaces de 
+aprender cosas nuevas, de adaptarse al medio; para lo cual en la actualidad se usan 
+técnicas basadas en redes neuronales y métodos probabilísticos como las redes bayesianas 
+o de Markov  (Croitoru et  al., 2018) . 
+La Visión computacional , es una disciplina esencial, porque capacita a sistemas 
+inteligentes para percibir objetos y comprender su entorno a través de imágenes. Su 
+desarrollo persigue la ambiciosa meta de igualar la capacidad de percepción visual 
+humana utilizando medios electró nicos para interpretar y comprender imágenes. La 
+comprensión de la imagen se puede considerar como el proceso de esclareser información 
+simbólica a partir de los datos visuales, empleando modelos que se fundamentan en 
+principios de geometría, física, estad ística y teoría del aprendizaje.  
+La Robótica , usada  para manipular y mover objetos, tomando en cuenta el peso , 
+la forma, la presión que debe aplicar se para no dañar el objeto y saber los movimientos a 
+realizar para trasladar el objeto a su destino.  En el presente constituyen máquinas 
+automatizadas que pueden tomar el lugar de los humanos en entornos peligrosos o 
+procesos de fabricación, o parecerse a los humanos en apariencia en el comportamiento 
+y la cognición.  
+1.6 Agentes inteligentes  
+El paradigma principal en el campo de la Inteligencia Artificial es el modelo 
+racional, que sostiene que una máquina es considerada inteligente si piensa y se comporta 
+de manera racional. Este enfoque se apoya en técnicas de lógica y en el concepto de 
+agen tes desarrollado por Russell y Norvig. Los agentes toman decisiones basadas en el 
+razonamiento y las conclusiones extraídas de la información disponible, priorizando la 
+opción más conveniente en función de los datos y el tiempo disponible.  
+El agente humano tiene un cuerpo con un conjunto de sensores que incluye la 
+visión, la audición, el olfato, el gusto, la piel, el sentido vestibular para el equilibrio, la 
+nocicepción relacionada al dolor, también tiene una serie de sistemas actuadores que 
+incluyen dedos, brazos y piernas y o tros sistemas de control motores como el cerebro y 
+el sistema nervioso central.  
+En el ámbito de la Inteligencia Artificial, un agente inteligente, también conocido 
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+24 como agente , es una entidad autónoma que existe en un entorno y se guía por la 
+información que recibe a través de sensores. Actúa de manera racional utilizando 
+actuadores para llevar a cabo acciones. En un instante dado, un agente toma decisiones 
+basadas en la secuen cia completa de percepciones que ha recibido hasta ese momento. 
+Para realizar esta tarea, utiliza un sistema de control que mapea las percepciones en 
+acciones (figura 1.4). Un ejemplo de agente sería un automóvil autónomo que debe tomar 
+decision es para llegar a su destino.  
+En el ámbito de la Inteligencia Artificial, el sistema de control de un agente se 
+refiere al algoritmo avanzado responsable de convertir percepciones captadas a través de 
+sensores en acciones específicas. Este algoritmo opera  dentro de una arquitectura análoga 
+a la de una computadora, dotada de sensores físicos y actuadores para interactuar con el 
+entorno. Un Agente Inteligente se define como:  
+Agente = Arquitectura + Programa  
+El sistema de control es esencial para el funcionamiento del agente, debido a que 
+permite que este interprete la información del entorno a través de los sensores y tome 
+decisiones lógicas sobre las acciones a emprender utilizando los actuadores. Es como el  
+cerebro del agente, procesando la información entrante y generando respuestas adecuadas 
+en base a su programación.  
+La arquitectura computacional permite que el agente interactúe con el medio 
+ambiente  de manera autónoma y realice las tareas para las que fue diseñado. Los sensores 
+permiten captura r datos del entorno y se transmiten al sistema de control, que analiza y 
+toma decisiones en función de la programación establecida , para proceder  a continuación, 
+a envía r las señales apropiadas a los actuadores, que ejecutan las acciones 
+correspondientes en el medio ambiente . 
+La arquitectura más simple puede ser la computadora  que posee un teclado y  un 
+mouse que constituyen los sensores y tiene el actuador que es el monitor. Las 
+percepciones de los sensores son utilizadas por el programa quien  se encarga que las 
+acciones generadas se muestren a través de la pantalla del monitor  (Leija, 2021) . Para 
+escribir el programa se requiere un lenguaje de programación como lisp, prolog, phyton, 
+C++, java, matlab, etc.  
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+25  
+Figura 1.4 Esquema de un agente  
+Elaborado por los Autores  
+La Inteligencia Artificial se enfoca en el desarrollo de programas que puedan 
+mostrar  un comportamiento racional, utilizando un a pequeña cantidad de código  en lugar 
+de tener una tabla con un gran número de entradas.  Un ejemplo de esto es el cálculo de 
+las raíces cuadradas , en el pasado, las personas utilizaban tablas con los resultados de las 
+raíces cuadradas para diferentes números. Sin embargo, con el avance de la IA, se ha 
+logrado reemplazar estas tablas por programas que tienen  unas pocas líneas en las 
+calculadoras electrónicas, lo que permite calcular fácilmente la raíz cuadrada de cualquier 
+número.  
+Este enfoque basado en programas más compactos y generales es un objetivo de 
+la IA. En lugar de tener que almacenar y consultar una gran cantidad de datos específicos, 
+se busca desarrollar algoritmos que puedan inferir y generalizar patrones a partir de 
+información limitada. Esto permite que los programas de IA sean más flexibles y capaces 
+de abordar una amplia gama de situaciones sin requerir una lista exhaustiva de casos 
+específicos.  
+1.7 Diseño del agente  
+El agente racional se esfuerza por tomar decisiones acertadas en el momento 
+oportuno, con el objetivo de lograr resultados óptimos. Para evaluar el desempeño de un 
+agente en su entorno, es fundamental medir su éxito en función de la secuencia de 
+acciones r ealizadas y las percepciones recibidas. Un estado se refiere a una configuración 
+particular del agente en su entorno, mientras que el estado inicial indica el punto de 
+partida del agente.  
+Las acciones que toma el agente conducen a una secuencia de estados a medida 
+que interactúa con su medio ambiente,  si la secuencia coincide con la secuencia deseada, 
+se considera que el agente ha actuado correctamente. Las acciones  son simplemente 
+Agente  
+ 
+Sensores  
+ 
+Actuadores  
+ 
+Sist
+de
+Percepciones  
+ 
+Acciones  
+ 
+Medio   Medio  
+Ambiente   
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+26 opciones que pueden elegirse en cualquier estado dado, y su elección tiene un impacto 
+directo en cómo evoluci ona el agente en el entorno.  
+Un agente racional debe  tomar decisiones informadas y eficientes, considerando 
+las percepciones y el conocimiento disponible, con el fin de maximizar la consecución de 
+sus objetivos. Al observar el entorno y tomar  de decisiones adecuadas, el agente puede 
+adaptarse y aprender a actuar de manera más inteligente en situaciones futuras.  
+La capacidad de un agente para seleccionar las acciones más apropiadas en cada 
+estado y lograr un rendimiento satisfactorio es un desafío importante  en el campo de la 
+inteligencia artificial.  
+Los investigadores y expertos en IA se dedican a desarrollar algoritmos y técnicas 
+que permitan a los agentes racionales tomar decisiones óptimas en una amplia variedad 
+de situaciones, contribuyendo así al avance y aplicación de esta disciplina.   
+ 
+Figura 1.5 Rompecabezas  
+Fuente: Wikipedia  
+Un estado se refiere a una configuración específica en la que se encuentra un 
+agente dentro de su entorno. Tomemos como ejemplo un rompecabezas  (figura 1.5)  de 
+15 piezas : cada estado representa una disposición particular en la que los números están 
+ordenados en el tablero. Las acciones, por otro lado, son las elecciones que se pueden 
+realizar en un estado dado.  
+Cuando se recibe un estado como entrada, el sistema devuelve como salida el 
+conjunto de acciones que se pueden llevar a cabo en ese estado en particular. Siguiendo 
+el ejemplo del rompecabezas de 15, las acciones disponibles en un estado dado están 
+determin adas por las formas en que los cuadrados se pueden deslizar dentro de la 
+configuración actual. Por ejemplo, si el cuadrado vacío se encuentra en el medio, hay 4 
+acciones posibles; si está junto a un borde, hay 3 acciones disponibles; y si está en una 
+esqui na, solo hay 2 acciones posibles.  
+
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+27 Estas acciones permiten al agente interactuar y modificar su estado en el entorno, 
+buscando lograr un objetivo específico. La capacidad de seleccionar las acciones más 
+adecuadas en función de un estado dado es esencial para que el agente resuelva 
+problemas , tome decisiones informadas y maximice su rendimiento en el entorno en el 
+que se encuentra.  
+En el campo de la Inteligencia Artificial, se desarrollan algoritmos y técnicas que 
+permiten a los agentes racionales determinar de manera eficiente las acciones disponibles 
+en cada estado y tomar decisiones óptimas para alcanzar sus metas. El estudio y av ance 
+de estas capacidades de toma de decisiones en la IA contribuyen al desarrollo de sistemas 
+más inteligentes y eficientes en diversos dominios de aplicación.  
+La secuencia de estados se muestra a continuación con otro  ejemplo . Se tiene n 
+tres recipientes  (figura 1. 6), cuyas capacidades son doce litros, ocho litros y tres  litros,  
+además un grifo de agua. Se  desea obtener un  litro de agua utilizando los recipientes, para 
+lo cual puede llenar los recipientes o vaciar d e un recipiente a otro, o vaciar  el agua de un 
+recipiente en el suelo. Existen algunas secuencias de estados que se pueden seguir, a 
+continuación, se muestra  una de ellas.  
+ 
+Figura 1.6 Tamaño de recipientes en litros  
+Elaborado por los Autores  
+ [12,8,3] Tamaño de los tres recipientes en litros  
+ [0,0,0]  Todos los recipientes  en un inicio se encuentran  vacíos (Estado inicial)     
+ [12,0,0]  El recipiente de 12 litros se llena  con agua del grifo  (Estado intermedio)     
+ [4,8,0]    Se vierte  el agua del recipiente de 12 litros en el de 8 litros (Estado                
+intermedio)    
+[1,8,3 ]   Se vierte  el agua del recipiente de 12 litros que contiene 4 litros en el de 3 litros 
+
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+28 (Estado intermedio)    
+[1,0,0] En el recipiente de 12 litros queda el 1 litro de agua, como las otras               
+cantidades de  líquido no son las buscadas se derrama en el suelo (Estado                final)   
+Este ejemplo muestra una secuencia de estados que nos permite obtener un litro 
+de agua utilizando los recipientes mencionados. Cada estado representa una 
+configuración específica de los recipientes y las acciones realizadas (llenar, transferir, 
+vaciar) nos  permiten llegar al estado deseado. Este tipo de problemas de razonamiento y 
+planificación son abordados mediante técnicas de inteligencia artificial, que permiten 
+encontrar soluciones óptimas o aproximadas a través de algoritmos específicos.  
+La capacidad de representar y manipular estados, así como de planificar 
+secuencias de acciones para lograr un objetivo, es fundamental en el campo de la IA. 
+Estas habilidades permiten a los sistemas inteligentes resolver problemas complejos y 
+tomar decisio nes informadas en una amplia variedad de dominios, desde problemas de 
+optimización hasta tareas de planificación y control.  
+Para el diseño del agente se establecen  cuatro factores  que se describen a 
+continuación  en la tabla 1 -1. 
+Tabla 1-1 Factores de diseño  
+Factores de 
+diseño  Conceptualización  
+Medida de 
+rendimiento      Quien define la medida de rendimiento es el diseñador del agente, 
+el cual establece los requisitos y objetivos específicos en función del 
+entorno donde va a trabajar el agente, incluyendo métricas como la 
+precisión (qué tan correctas son las acciones o respuestas del agente), 
+eficiencia (qué cantidad de recursos que consume el agente para 
+realizar su tarea), velocidad de reacción(qué tan rápido puede 
+responder o actuar el agente) y la satisfacción del usuario (cómo se 
+sienten los usuarios acerca de las interacciones con el agente). Estas 
+métricas sirven para que el diseñador ajuste y calibre a decuadamente 
+el agente.  
+Entorno de 
+trabajo      El entorno de trabajo es la estructura física, lógica y digital donde 
+el agente realiza sus tareas y toma decisiones, es el lugar donde 
+interactúa con objetos y entidades presentes (otros agentes, humanos, 
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+29 herramientas); el diseñador debe identificar posibles problemas que 
+el agente tiene que enfrentar y proceder a desarrollar estrategias y 
+algoritmos que permitan que pueda el agente realizar sus tareas de 
+manera eficiente y competitiva.   
+Percepciones      Las percepciones es la capacidad del agente para obtener 
+información del medio ambiente que lo rodea a través de sensores. 
+Los sensores son los dispositivos que permiten al agente captar datos 
+y señales del entorno, que le proporcionan información al agent e 
+sobre diferentes aspectos como el estado físico, la presencia de 
+objetos, eventos o cualquier otro tipo de estímulo relevante.  
+Mediante estos datos el agente pueda comprender y tomar decisiones 
+adecuadas en su entorno.  
+Acciones      Las acciones representan el efecto que tiene el agente sobre su 
+medio ambiente, utilizando actuadores, estos son dispositivos o 
+mecanismos que permiten al agente interactuar físicamente con el 
+entorno y realizar cambios o ejecutar acciones específicas. Est os 
+actuadores pueden variar según el tipo de agente y la aplicación para 
+la cual están destinados, e incluir elementos como motores, brazos 
+robóticos, sistemas de manipulación, entre otros.  
+    La capacidad de realizar acciones al agente le permite manifestar 
+su comportamiento y llevar a cabo tareas en su entorno. El agente 
+mediante los actuadores, puede realizar acciones como mover 
+objetos, desplazarse en el espacio, modificar configuraciones o 
+ejecutar cualquier otra acción física requerida en el contexto.  
+Elaborado por los Autores  
+En el diseño del agente denominado robot que juega al futbol (figura 1.7) la 
+medida de rendimiento constituye: partidos ganados, partidos empatados, partidos 
+perdidos, goles a favor, goles en contra. El entorno de trabajo va a ser el campo de juego, 
+la pelota, sus compañeros de juego, los robots adversarios. Para que pueda realizar las 
+percepciones se requiere una cámara, sensores táctiles, acelerómetro, sensores de 
+orientación. Para efectuar acciones necesita dispositivos de locomoción como la s piernas 
+que le permitan trasladarse de un lugar a otro y dispositivos para patear el balón.  
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+30  
+Figura 1.7 Robots jugando futbol  
+Fuente: El País España  
+El agente racional además de recopilar información debe aprender lo máximo 
+posible de lo que está percibiendo, la configuración inicial del agente debe reflejar un 
+conocimiento preliminar del entorno, pero a medida que adquiere experiencia el 
+conocimiento se debe modificar y aumentar.  
+Las funciones del agente se calculan en tres períodos que son:  
+• Durante el diseño de agente: Los encargados de diseñar el agente realizan cálculos, 
+para que el agente posea el conocimiento inicial requerido.  
+• El agente pensando en el próximo estado:  Cuando el agente piensa en la siguiente 
+operación, realiza más cálculos.  
+• El agente aprende de la experiencia: Producto de la experiencia el agente lleva a cabo 
+más cálculos para decidir cómo modificar su forma de comportarse.  
+El agente racional debe tener un comportamiento autónomo que le permita 
+aprender a determinar cómo compensar el conocimiento incompleto o parcial inicial, 
+pudiendo de esta forma ser capaz de navegar en su entorno sin la guía de una entidad 
+externa (un oper ador humano), pueda buscar metas en su entorno, resolver 
+problemas.  
+El agente debe poder subsistir a través del tiempo en el medio ambiente que 
+se lo ubique, e interactuar con otros agentes para proporcionar información o que le 
+proporcionen información, o comunicarse con los usuarios. Tener movilidad le 
+permite al agente migrar entre sistemas a través de una red, tener la capacidad de 
+aprender y adaptarse al entorno. En el proceso de aprendizaje los sensores deben 
+mapear el entorno, para que el sistema de control de las órdenes adecuadas a los 
+actuadores quienes demuestran  una conducta o comportamiento inteligente que 
+
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+31 satisfaga un conjunto de restricciones definidas.  
+Después de las suficientes experiencias interaccionando con el entorno, el 
+comportamiento del agente racional será independiente del conocimiento que poseía 
+inicialmente.    Esto significa que el agente ha adquirido la capacidad de adaptarse y 
+responder de manera inteligente a diferentes situaciones sin depender únicamente de 
+su conocimiento previo.  
+1.7.1 Propiedades del entorno de trabajo  
+Las propiedades del entorno de trabajo se refieren a las características y cualidades 
+del ambiente en donde un agente o sistema de inteligencia artificial ejecuta sus acciones. 
+Las propiedades del entorno influyen en cómo un agente puede percibir y actuar,  y pueden 
+variar ampliamente según la aplicación específica. Es necesario categorizar los entornos 
+de trabajo (Tabla 1 -2) en los que el agente inteligente va a desenvolverse, esto ayuda en 
+su diseño . 
+Tabla 1-2 Propiedades del entorno de trabajo y ejemplos de agentes  
+ENTORNO  CARACTERÍSTICAS  EJEMPLOS 
+DE AGENTES  
+Totalmente 
+observable  
+    En un entorno totalmente observable, 
+los sensores del agente deben 
+proporcionar una representación 
+completa y fiable del estado del medio 
+ambiente en que se desenvuelve, en 
+cada momento. El agente debe  detectar 
+y capturar todos los aspectos que son 
+relevantes  en la toma  de decisiones  que 
+están en función de las medidas de 
+rendimiento  (MacKay, 2003) . En estos 
+entornos el agente no necesita 
+mantener nin gún estado interno para 
+saber qué sucede en el mundo.  
+   Al existir una visión integral y 
+detallada del estado actual, se facilita la 
+toma de decisiones informadas sin o Ayudante de 
+matemáticas  
+o Juego de Ajedrez  
+o Sistema de 
+Navegación GPS  
+o Laberinto con 
+visibilidad completa  
+o Sistema de 
+Monitoreo de 
+Sensores  
+o Agente de 
+reconocimiento de 
+voz 
+o seguimiento de 
+objetos  
+o análisis de datos  
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+32 incertidumbre, el agente no requiere 
+mantener un histórico para completar 
+la información faltante o inferir 
+aspectos ocultos del entorno. La 
+capacidad de observación completa y 
+sin limitaciones brinda al agente una 
+ventaja al comprender de manera 
+precisa e l contexto en el que actúa , 
+poder tomar decisiones adecuadas en 
+tiempo real  y realizar cálculos  exactos 
+del beneficio, importancia de una 
+determinada acción, o la recompensa 
+esperada  basado en el estado 
+observable .   o control de calidad  
+o reconocimiento 
+facial  
+ 
+Parcialmente 
+observable  En los entornos parcialmente 
+observables la percepción del agente es 
+afectada por la presencia de ruido  
+(Lindley, 2013)  o la utilización de 
+sensores poco exactos o porque el 
+agente no recibe información completa 
+del sistema ; esta percepción  limitada o 
+incompleta  le dificulta la obtención de 
+una visión global  y precisa del estado 
+del entorno , pudiendo generar 
+incertidumbre en  el agente.  
+   El agente al no tener acceso a una 
+representación directa y completa del 
+estado en el que se encuentra , se ve 
+obligado a  realizar inferencias y 
+estimaciones para obtener una 
+comprensión aproximada del estado 
+actual. En búsqueda de  enfrentar esta o Poker  
+o Tráfico en tiempo 
+real 
+o Laberinto con 
+visibilidad limitada  
+o Predicción del clima  
+o Robot que juega al 
+futbol  
+o Juego del veintiuno 
+(Black jack) . 
+o Robot clasificador 
+de baldosas  
+o Robot de limpieza 
+autónomo  
+o Asistente virtual 
+inteligente  
+o reconocimiento de 
+objetos  
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+33 situación se debe incluir la utilización 
+de algoritmos de filtrado  que procesen 
+secuencias de datos ruidosos o 
+incompletos  y técnicas de fusión de 
+datos que combinen la información 
+entregada por los sensores de tal forma 
+que se pueda  mejorar la precisión de la 
+percepción.  o Sistema de 
+detección y 
+prevención de 
+fraudes  
+o diagnóstico médico  
+Determinista     En los entornos deterministas, el 
+siguiente estado del medio ambiente 
+está totalmente determinado  por la 
+acción  realizada  en el estado actu al. Al  
+ejecuta r una acción específica, el 
+resultado o estado siguiente del 
+entorno es predecible de manera 
+precisa y no hay incertidumbre 
+involucrada  (Samuel, 1959) . La 
+relación causa -efecto entre las acciones 
+del agente y los estados del entorno , 
+nos indica, que cualquier acción que el 
+agente realice tiene un resultado 
+específico y directo  en el entorno.  o Ayudante de 
+matemáticas  
+o Juego de ajedrez  
+o Laberinto sin 
+obstáculos móviles  
+o Operaciones 
+matemáticas  
+o Control de sistemas 
+físicos  
+Estocástico     En los entornos estocásticos, el 
+cambio del entorno está sujeto a cierto 
+grado de aleatoriedad o incertidumbre  
+debido a las acciones  del agente ; 
+aunque el agente tome una acción 
+específica, el resultado o estado 
+siguiente del entorno no pueda 
+predecirse con total certeza, este puede  
+variar debido a factores aleatorios o no 
+completamente conocidos  así se o Robot que juega al 
+futbol . 
+o Robot clasificador 
+de baldosas  
+o Mercados 
+financieros  
+o Tráfico de vehículos  
+o Clima  
+o Juego de póker  
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+34 conozca el estado actual .  
+   Debido a l a incertidumbre presente 
+en el entorno estocástico, la 
+probabilidad de los diferentes 
+resultados puede modelarse  utilizando 
+modelos probabilísticos  para tomar 
+decisiones informadas y racionales.  
+Estratégico     En los entornos estratégicos, el 
+medio ambiente es determinista para el 
+agente, lo que significa que el estado 
+siguiente del entorno está 
+completamente determinado por las 
+acciones del agente.  
+   Al existir otros agentes en el entorno 
+se introduce cierto nivel de 
+incertidumbre estratégica , debido a que 
+las acciones de los otros agentes 
+pueden influir en el estado siguiente 
+del entorno de manera impredecible ; 
+esto requiere que el agente considere 
+diferentes estrategias y tome 
+decisiones adaptativas para enfrentar 
+los posibles resultados de las acciones 
+de los otros agentes.  
+   Para lograr el agente sus objetivos en 
+estos entornos que son dinámicos y 
+competitivos, deben  poder analizar y 
+anticipar las acciones de los otros 
+agentes.  o Juego del veintiuno 
+(black jack)  
+o Ajedrez  
+o Poker  
+o Negociación y 
+subastas  
+o Competencia 
+empresarial  
+o Estrategia militar  
+o Videojuegos de 
+estrategia en tiempo 
+real (RTS)  
+o Planificación 
+logística  
+o Sistemas de gestión 
+de tráfico  
+o Simuladores de 
+vuelo  
+ 
+ 
+Episódico     En un entorno episódico, cada estado 
+en el que se encuentra el agente no 
+depende de los estados anteriores, por o Búsqueda en 
+laberintos  
+o Robot clasificador 
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+35 lo que una acción realizada en un 
+estado no tiene influencia en los 
+estados futuros, cada estado constituye 
+un episodio atómico. El agente no tiene 
+una memoria de larga duración y cada 
+interacción con el entorno se considera 
+como un episodio separado e 
+independiente.  
+   Para la toma  de decisiones y realiza r 
+acciones el agente se basa únicamente 
+en la información disponible en el 
+estado actual, sin tener en cuenta el 
+historial de estados o acciones pasadas.  
+   Esto simplifica el modelado y la 
+solución de problemas en entornos en 
+los que la secuencia de acciones no 
+tiene una influencia acumulativa en los 
+resultados futuros.  de baldosas  
+o Recolección de 
+objetos  
+o Juegos de cartas 
+como el Solitario  
+o Juegos de 
+plataformas (Super 
+Mario Bros)  
+o Juegos de escape  
+o Simulaciones de 
+emergencias  
+o Juegos de rol 
+(Dungeons & 
+Dragons)  
+o Juegos de lógica y 
+acertijos  
+ 
+ 
+Secuencial     En los entornos secuenciales, las 
+decisiones tomadas en un momento 
+dado pueden afectar a las decisiones y 
+resultados futuros, cada estado 
+depende del histórico anterior.   
+   El agente debe evaluar no solo el 
+impacto inmediato que tienen sus 
+acciones, sino también   considerar 
+cuidadosamente las consecuencias de 
+sus acciones y tomar decisiones 
+estratégicas para maximizar su 
+rendimiento total en el transcurso del 
+tiempo.  
+   La secuencialidad y la necesidad de o Navegación en un 
+entorno 
+desconocido  
+o Juegos de ajedrez  
+o Toma de decisiones 
+en tiempo real  
+o Robot que juega al 
+futbol  
+o Ayudante de 
+matemáticas  
+o Juego del veintiuno 
+(Black jack)  
+o Sistemas de control 
+de inventario  
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+36 planificación a largo plazo hacen que 
+estos entornos de trabajo sean más 
+desafiantes y requieran algoritmos y 
+enfoques especializados para la toma 
+de decisiones y el control inteligente 
+del agente , que maximice los 
+resultados positivos a lo largo del 
+tiempo.  o Planificación y 
+programación de 
+rutas  
+o Juegos de aventuras 
+o exploración  
+ 
+Estático     En un entorno estático, mientras el 
+agente delibera sobre la acción 
+siguiente el entorno no cambia.  El 
+agente no tiene que enfrentarse  con 
+cambios inesperados o dinámicos en su 
+entorno mientras toma decisiones o 
+realiza acciones. Los entornos estáticos 
+son más fáciles de entender  y predeci r, 
+facilitando  el diseño de los agentes y 
+algoritmos que funcionan 
+eficientemente en estos entornos . o Juego del veintiuno 
+(Black jack)  
+o Rompecabezas  
+o Laberinto  
+o Clasificación de 
+imágenes  
+o Sistemas de 
+detección de spam  
+o Sistemas de filtrado 
+de contenido  
+o Sistemas de 
+diagnóstico médico  
+o Sistemas de 
+recomendación de 
+productos  
+o Análisis de datos 
+financieros  
+ 
+Dinámico     En los entornos dinámicos, el 
+entorno puede experimentar cambios 
+mientras el agente está considera ndo la 
+acción futura  que va a realizar . Estos 
+cambios pueden ser el resultado de  
+eventos externos, interacciones con 
+otros agentes o incluso como resultado o Robot que juega al 
+futbol  
+o Robot clasificador 
+de baldosas  
+o Tráfico de 
+vehículos  
+o Juego de ajedrez  
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+37 sus propias acciones.  
+ 
+   El agente, debe poder  adaptarse y 
+tomar decisiones en tiempo real a 
+medida que el entorno evoluciona.  
+Debe ser capaz de detectar y 
+comprender los cambios en su entorno, 
+actualizar su conocimiento y ajustar su 
+comportamiento en consecuencia.  
+   Para hacer frente a los entornos 
+dinámicos, los agentes utilizan técnicas 
+como la monitorización constante del 
+entorno, la detección de cambios, la 
+planificación en tiempo real y el 
+aprendizaje adaptativo. Estas técnicas 
+hacen que  el agente tom e decisiones 
+informadas y adapte  su estrategia a los 
+cambios del entorno.  o Simulaciones de 
+vuelo  
+o Sistemas de 
+atención médica 
+personalizada  
+o Sistemas de 
+recomendación 
+personalizada  
+o Sistemas de 
+simulación de vida 
+artificial  
+o Sistemas de gestión 
+de energía  
+o Sistemas de 
+logística y 
+distribución  
+ 
+Semi estático     El entorno  semiestático  no 
+experimenta cambios significativos,  se 
+mantiene relativamente constante a lo 
+largo del tiempo en términos de sus 
+características físicas y de 
+configuración . S in embargo, el 
+rendimiento puede variar  a medida que 
+se desarrolla  el agente, esto se debe a la 
+capacidad que tiene de aprender, 
+adaptarse y mejorar en el tiempo.  
+   El agente puede también 
+experimentar mejoras en su capacidad 
+de toma r decisiones, resol ver 
+problemas o alcanzar sus objetivos a o Ayudante de 
+matemáticas  
+o Juegos de mesa  
+o Sistemas de gestión 
+de inventario  
+o Planificación de 
+rutas de transporte  
+o Configuración de 
+redes  
+o Sistemas de 
+recomendación de 
+contenido  
+o Sistemas de gestión 
+de recursos 
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+38 medida que adquiere experiencia y 
+conocimiento.  
+   Los agentes  para mejorar su 
+rendimiento utiliza n técnicas de 
+aprendizaje automático, optimización 
+y toma de decisiones basadas en datos . naturales  
+o Sistemas de 
+planificación urbana  
+o Sistemas de 
+optimización de 
+energía  
+o Sistemas de 
+atención al cliente  
+ 
+ 
+Discreto     En los entornos discretos, el  conjunto 
+de estados, las acciones y percepciones 
+que puede experimentar el agente , 
+como el espacio de búsqueda , son 
+finitos y claramente definidos. El 
+agente tiene  un número limitado y 
+específico de estados en los puede 
+encontrarse, así como tambien  un 
+conjunto definido de acciones y 
+percepciones que puede realizar y 
+recibir.  
+   La discreción en los entornos 
+proporciona una estructura clara y bien 
+definida, que facilita la modelización y 
+el análisis del comportamiento del 
+agente. Los estados, acciones y 
+percepciones se pueden representar 
+mediante variables discretas o 
+categorías e specíficas, que simplifica 
+el diseño y la implementación de 
+algoritmos y estrategias de toma de 
+decisiones.  
+   Al tener un número finito de estados, 
+acciones y percepciones, es posible o Ayudante de 
+matemáticas  
+o Juego del veintiuno 
+(Black jack)  
+o Juego de ajedrez  
+o Sistema de 
+navegación en una 
+cuadrícula  
+o Solución de puzles  
+o Juego de laberintos  
+o Juego de estrategia 
+por turnos  
+o Juego de palabras  
+o Tres en raya  
+o Juego de damas  
+o Solución de 
+crucigramas  
+o Simulación de vida 
+artificial  
+o Simulación de 
+tráfico peatonal  
+o Control de 
+inventario  
+o Sistemas de control 
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+39 realizar un mapeo detallado  y 
+sistemático de todas las posibles 
+combinaciones, lo que permite una 
+planificación precisa y una evaluación 
+completa de las estrategias del agente.  
+   La naturaleza discreta de los entornos 
+proporciona una base sólida para la 
+aplicación de técnicas matemáticas , 
+algoritmos de búsqueda, optimización 
+y aprendizaje. Esto incluye métodos 
+como los árboles de búsqueda, 
+algoritmos de programación dinámica 
+y técnicas de aprendizaje automático 
+basadas en modelos discretos.  de producción  
+ 
+ 
+Continuo     En los entornos continuos, el número 
+de estados posibles es extremadamente 
+amplio e incluso infinito. En el 
+transcurso d el tiempo, los estados del 
+medio ambiente experimentan cambios 
+continuos, esto hace  que la percepción 
+del agente en cada instante sea única y 
+varíe de forma continua. En 
+consecuencia, el agente se ve obligado  
+tomar decisiones y acciones continuas 
+para adaptarse y responder a estos 
+cambios dinámicos.  
+   Dado que el número de estados es 
+extenso , resulta imposible  mapear y 
+explorar exhaustivamente todas las 
+posibilidades.  Para poder abordar 
+problemas en entornos continuos es 
+necesario  utilizar enfoques basados en o Robot que juega al 
+futbol . 
+o Robot clasificador 
+de baldosas . 
+o Sistema de control 
+de vuelo de un avión  
+o Brazo robótico  
+o Sistema de 
+navegación 
+autónoma de 
+vehículos  
+o Simulaciones de 
+física  
+o Control de procesos 
+industriales  
+o Gestión de carteras 
+de inversión  
+o Control de sistemas 
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+40 técnicas como el análisis de funciones 
+de valor, algoritmos de optimización 
+numérica y métodos basados en 
+modelos probabilísticos ; que  permiten 
+representar y aproximar los estados y 
+acciones de manera continua , esto 
+facilita la toma de decisiones mediante 
+la maximización de una función 
+objetivo o la adaptación a patrones y 
+cambios en el medio ambiente.  
+   En los entornos continuos, el 
+aprendizaje y la adaptación es 
+importante . Los agentes inteligentes 
+deben ser capaces de aprender de la 
+experiencia y mejorar sus acciones en 
+función de la retroalimentación 
+continúa  proporcionada por el entorno  
+(Gelfond & Kahl, 2014) .  
+   Es necesario  el uso de  técnicas de 
+aprendizaje automático y algoritmos de 
+control adaptativo para ajustar y 
+mejorar su rendimiento a medida que 
+interactúan con el medio ambiente.  de energía 
+renovable  
+o Robot de 
+manipulación de 
+objetos  
+o Sistema de control 
+de tráfico aéreo  
+o Simulaciones de 
+fluidos  
+o Optimización de 
+carreteras y 
+transporte  
+o Sistemas de 
+recomendación 
+personalizados  
+o Control de sistemas 
+de energía 
+renovable  
+Agente individual     En los entornos de agente individual , 
+solo un agente interactúa de manera 
+autónoma con el medio ambiente. Por 
+lo tanto,  no hay necesidad de 
+interacción o colaboración directa con 
+otros agentes, centr ándose toda la 
+actividad en el agente principal.  
+   En estos escenarios, el agente 
+individual asume la responsabilidad o Asistente virtual  en 
+un teléfono 
+inteligente  
+o Robot de limpieza  
+o Sistema de 
+recomendación  de 
+películas  
+o Agente de comercio 
+electrónico  
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+41 completa de percibir su entorno, tomar 
+decisiones y ejecutar acciones que se 
+alinien con su objetivo y las 
+condiciones específicas del entorno. La 
+ausencia de interacciones directas con 
+otros agentes reduce la complejidad de 
+las dinámicas de interacción y las 
+estrategias a considerar.  
+   Aunque el agente trabaja  de forma 
+individual, puede estar inmerso en 
+esenarios  donde existen otros agentes 
+de forma indirecta, como sistemas 
+automatizados o programas de 
+software que son importantes en la 
+configuración o en el control del 
+entorno. Aunque no interactúan 
+directamente con el agente principal, 
+estos elementos pueden afectar  
+significativ amente  las condiciones y 
+restricciones del entorno, perjudicando  
+las decisiones y acciones del agente 
+individual.  o Chatbot de servicio 
+al cliente  
+o Robot clasificador 
+de baldosas  
+o Asistente personal 
+en un dispositivo 
+doméstico 
+inteligente  
+o Agente de salud 
+personal  
+o Agente de 
+seguridad 
+doméstica  
+o Agente de 
+entrenamiento 
+físico  
+o Agente de 
+aprendizaje de 
+idiomas  
+ 
+ 
+ 
+Multiagente     En los entornos multiagente, están 
+presentes  dos o más agentes que 
+interactúan entre sí, pudiendo 
+competir, cooperar o una combinación 
+de ambos. Estos agentes persegu en 
+objetivos y acciones independientes, 
+pudiendo  generar dinámicas complejas 
+y estratégicas en el entorno.  
+   En est os entornos, los agentes 
+pueden tener diferentes niveles de o Tráfico inteligente  
+o Simulaciones de 
+poblaciones  
+o Robot que juega al 
+futbol  
+o Ayudante de 
+matemáticas . 
+o Juego del veintiuno 
+(Black jack)  
+o Juegos en línea  
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+42 conocimiento, habilidades y 
+capacidades, que influyan  en su 
+comportamiento y toma de decisiones.  
+   Los agentes pueden estar equipados 
+con sensores para percibir el entorno y 
+actuadores para realizar acciones que 
+afecten al entorno. La interacción entre 
+los agentes puede ser directa o 
+indirecta, y puede involucrar 
+comunicación, negociación, 
+coordinación o competencia.  
+   El comportamiento de los agentes 
+puede ser determinista o estocástico, 
+evoluciona do a lo largo del tiempo a 
+medida que los agentes aprenden y se 
+adaptan al entorno . o Sistemas de 
+negociación 
+electrónica  
+o juegos competitivos  
+o Sistemas de 
+recomendación 
+colaborativa  
+o Sistemas de gestión 
+del tráfico aéreo  
+o Sistemas de 
+coordinación de 
+robots en almacenes  
+o Juegos de estrategia 
+en tiempo real en 
+línea  
+Elaborado por los Autores  
+1.7.2 Clas es de agentes  
+A continuación,  se describen algunos de los agentes utilizados en inteligencia 
+artificial:  
+Agentes inteligentes : Han transformado  el diseño de las interfaces de usuario 
+inteligentes, cuyo objetivo es reducir la sobrecarga de información del usuario. Para 
+lograrlo, utilizan técnicas de filtrado de información basadas en el aprendizaje de las 
+necesidades del usuario y las circunstancias en las que se realizan determinadas acciones  
+(Brookshear & Brylow, 2020) . Por ejemplo, en las interfaces de correo electrónico, los 
+agentes pueden notificar al usuario la llegada de un nuevo correo que le interesa , evitando 
+la distracción de en mensajes no deseados.  
+Las interfaces inteligentes aplican algoritmos de aprendizaje automático y 
+procesamiento de lenguaje natural en el análisis del  contenido de los mensajes, en la 
+identifica ción de  su relevancia y la presenta ción al usuario  de únicamente la información 
+más importante y pertinente. De esta manera, se mejora la eficiencia y la experiencia de l 
+usuario , al evitar la necesidad de revisar manualmente grandes volúmenes de 
+información.  
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+43 Agentes sintéticos : Estos agentes h an revolucionado los entornos de realidad 
+virtual, especialmente en la industria del entretenimiento, como películas, programas de 
+televisión y publicidad , permit iendo  generar imágenes por computadora que evitan la 
+necesidad de construir maquetas complicadas para efectos especiales o de alquilar 
+grandes cantidades de vestuario para escenas con multitudes.  
+La inteligencia artificial y las técnicas de generación de gráficos por computadora 
+permiten simular personajes y objetos virtuales de manera realista, adaptándose a las 
+necesidades de cada producción. La capacidad de trabajo autónomo que realizan estos 
+agentes agiliza el proceso de producción y reduce los costos asociados.   
+Ofrecen flexibilidad creativa al permitir la generación de mundos virtuales 
+detallados y escenas impactantes que antes serían difíciles o costosas de lograr , han 
+abierto nuevas posibilidades en la creación de efectos visuales y en la representación de 
+situaciones complejas . 
+Agentes conversacionales:  Llamados  también  Chatterbots son programas 
+diseñados para llevar a cabo conversaciones de forma auditiva o textual. Estos agentes 
+encuentran aplicaciones en diversos campos, como el servicio al cliente y la adquisición 
+de información. Su objetivo principal es simular la in teracción humana y brindar 
+respuestas relevantes y coherentes a través de la identificación de patrones en el lenguaje.  
+Los primeros c hatterbots fue ro Eliza  (1966) y Parry  (1972) permitían mantener 
+conversaciones básicas con los usuarios . En la actualidad debido a los avances en 
+inteligencia artificial y procesamiento del lenguaje natural , los modernos chatterbots son  
+capaces de comprender el contexto, analizar el tono y el significado de las palabras, e 
+incluso aprender de las interacciones previas para mejorar sus respuestas.  
+Los Chatterbots son ampliamente utilizados en aplicaciones de atención al cliente, 
+asistentes virtuales y plataformas de chat en línea. Su capacidad para mantener 
+conversaciones coherentes y proporcionar información relevante ha demostrado ser una 
+herramie nta valiosa en la automatización de tareas y en la mejora de la experiencia del 
+usuario.  
+El lenguaje de marcas de Inteligencia Artificial (AIML - Artificial Intelligence 
+Markup Language) es un intérprete que se utiliza para construir agentes conversacionales. 
+AIML está especialmente diseñado para la creación de agentes de software con capacida d 
+de comprensión y generación de lenguaje natural, conocidos como Alicebots. Estos 
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+44 agentes son capaces de mantener conversaciones con usuarios y proporcionar respuestas 
+adecuadas en función de los patrones de entrada definidos en las categorías.  
+Agentes móviles : Son agentes que tienen  la capacidad de moverse o migrar de un 
+host a otro en un entorno distribuido , poseen  autono mía, tienen la  capacidad de  aprender, 
+de percibir su entorno y responder de forma oportuna  (Eze, 2022) . Estos agentes pueden 
+ejecutarse en diferentes máquinas sin necesidad de llevar consigo su propio código, lo 
+que les permite aprovechar recursos distribuidos de manera eficiente.  
+Los agentes móviles son capaces de gestionar grandes volúmenes de información 
+y facilitar la comunicación en tiempo real, esto hace que sean  adecuados para aplicaciones 
+que requieren interacciones dinámicas y respuestas rápidas. Estos agentes se utilizan en 
+diversos contextos, como: supervisión y optimización de tráfico en las redes, sistemas de 
+monitoreo y control, optimización de recursos, distribución de tareas , aplicaciones de 
+colaboración , motores de búsqueda, asistentes personales, aprendizaje en la n ube. 
+Agentes reactivos simples:  Estos agentes toman decisiones basándose únicamente 
+en la percepción actual del entorno, sin mantener un estado interno. Su comportamiento 
+se basa en respuestas directas a los estímulos del entorno en tiempo real, sin considerar el 
+pasado ni planificar el futuro de manera explícita. Estos agentes se centran en generar 
+respuestas rápidas y efectivas a situaciones presentes, sin tener en cuenta el historial . 
+Estos agentes son adecuados en casos  donde el estado actual del entorno 
+proporciona suficiente información para tomar decisiones inmediatas. Son eficientes en 
+términos de tiempo de respuesta y recursos computacionales, debido a que  no requieren 
+mantener un modelo interno ni realizar un procesamiento exhaustivo de la información.  
+Ejemplos de agentes reactivos simples son: un termostato inteligente que toma 
+decisiones basándose únicamente en la información actual de la temperatura ambiente, 
+un robot seguidor de línea que utiliza sensores para detectar una línea en el suelo y tomar 
+decisiones en tiempo real para seguir la línea . 
+Agentes reactivos basados en modelos:  Estos agentes mantienen un modelo 
+interno del mundo que utilizan para tomar decisiones. Este modelo es una representación 
+interna del estado del entorno y cómo evoluciona en respuesta a las acciones del agente.  
+Estos agentes tienen la capacidad de anticipar los efectos de sus acciones y 
+planificar a corto plazo. Utilizan su modelo interno para simular diferentes secuencias de 
+acciones posibles y evaluar los resultados esperados antes de tomar una decisión , esto les 
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+45 permite considerar las consecuencias a corto plazo y seleccionar la acción que mejor se 
+alinee con sus objetivos o criterios de rendimiento.  
+Los agentes reactivos basados en modelos son especialmente útiles en entornos 
+donde es necesario planificar y tomar decisiones considerando las consecuencias futuras. 
+Por ejemplo, en un juego de ajedrez, el agente  puede simular diferentes movimientos y 
+evaluar cómo afectarían al tablero y a su posición futura. Esto les permite tomar 
+decisiones estratégicas y anticiparse a las jugadas del oponente  (Knott, 2017) . 
+Agentes basados en objetivos:  Estos agentes tienen metas u objetivos bien claros 
+de lo que desean alcanzar en su entorno. Se guían por la evaluación de su estado actual 
+en relación con dichos objetivos y toman acciones que los acerquen a ellos.  
+Estos agentes mantienen un modelo interno del estado del entorno y utilizan este 
+modelo para evaluar qué tan cerca están de alcanzar sus metas. Analizan las posibles 
+acciones disponibles y seleccionan la que mejor se alinee con sus objetivos. Esta selecció n 
+se basa en algún tipo de función de evaluación que considera factores como el costo, la 
+utilidad o la probabilidad de éxito.  
+A medida que el agente toma acciones y su estado cambia, vuelven a evaluar su 
+posición en relación con los objetivos y ajusta n sus decisiones. También  pueden 
+considerar diferentes opciones y seleccionar la que maximice la probabilidad de alcanzar 
+sus metas  (MacKay, 2003) . 
+Los agentes basados en objetivos son muy útiles en entornos en los que se 
+establecen metas claras y los caminos para lograrlas pueden ser diversos. Por ejemplo, en 
+un sistema de planificación de rutas, un agente basado en objetivos si tiene  como objetivo 
+llegar a un destino específico debe  considerar diferentes rutas posibles en función del 
+tiempo, la distancia o las restricciones de tráfico.  
+Agentes basados en utilidad:  Estos agentes evalúan las acciones posibles en 
+términos de su utilidad o valor esperado, tomando decisiones que maximizan dicha 
+utilidad.  
+La utilidad representa la medida de satisfacción o beneficio que el agente espera 
+obtener al tomar una determinada acción en un estado dado. Cada acción posible se evalúa 
+en función de la utilidad esperada , que se ha estima do que proporcionará al agente.  
+Estos agentes de inteligencia artificial no se limitan a evaluar únicamente los 
+resultados inmediatos de sus acciones; también consideran cuidadosamente las 
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+46 implicaciones a largo plazo y las probabilidades asociadas a cada posible resultado  (Das, 
+2008) . Para ello, aplican modelos avanzados o funciones de utilidad que les permiten 
+calcular la utilidad esperada de cada opción de acción, seleccionando aquella que 
+maximice su valor global.  
+La función de utilidad incorpora una variedad de factores, incluyendo los 
+objetivos específicos del agente, los costes asociados a cada acción, los riesgos e 
+incertidumbres presentes en el entorno, así como las preferencias propias del agente. 
+Utilizando e sta función, el agente es capaz de asignar valores numéricos a diferentes 
+acciones y realizar comparaciones objetivas entre ellas, lo que le facilita la toma de la 
+decisión más óptima y estratégica dentro del contexto en el que trabaja . 
+Un ejemplo de aplicación de agentes basados en utilidad es en sistemas de 
+recomendación, donde el agente busca maximizar la utilidad del usuario ofreciendo 
+recomendaciones personalizadas que se ajusten a sus preferencias y necesidades.  
+Agentes basados en conocimiento:  Estos agentes utilizan conocimiento experto 
+o reglas específicas para tomar decisiones, basándose en una base de conocimientos 
+previamente definida. Se trata de agentes que aplican razonamiento lógico y utilizan 
+reglas o algoritmos específicos para resolver problemas o responder preguntas.  
+El conocimiento experto proveni ente de expertos humanos en un dominio 
+específico  se captura y codifica en forma de reglas o declaraciones lógicas. Este 
+conocimiento incluye  hechos, reglas, relaciones y restricciones relevantes para el dominio 
+en cuestión.  
+Los agentes basados en conocimiento utilizan su acervo de información 
+especializada para realizar inferencias complejas y tomar decisiones informadas. 
+Emplean técnicas sofisticadas como la lógica proposicional, la lógica de predicados o 
+sistemas avanzados basados en reglas para procesar y razonar sobre el conocimiento 
+acumulado, conduciéndoles a conclusiones lógicas y fundamentadas.  
+El proceso de toma de decisiones en estos agentes implica una búsqueda 
+meticulosa en su base de conocimientos para identificar reglas o hechos pertinentes a la 
+situación específica. Luego, aplican razonamiento lógico detallado para derivar 
+conclusiones coh erentes. Estas conclusiones son trascendentales , debido a que guían al 
+agente en la selección de acciones más adecuadas o en la generación de respuestas 
+precisas a los desafíos que enfrentan.  
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+47 Los agentes basados en conocimiento son especialmente útiles en dominios en los 
+que se dispone de un conocimiento experto bien definido y estructurado. Se utiliza n en 
+sistemas de diagnóstico médico, asistentes virtuales, sistemas de recomendación o en 
+cualquier otro contexto en el que se requiera un razonamiento lógico basado en 
+conocimiento específico.  
+Agentes multiagente:  Son sistemas compuestos por varios agentes individuales 
+que interactúan y colaboran entre sí para lograr un objetivo común o resolver un problema 
+de manera cooperativa. Cada agente en el sistema es autónomo y puede tener diferentes 
+características, habilid ades y conocimientos  (Eze, 2022) . 
+La interacción entre los agentes se llevarse a cabo a través de diferentes 
+mecanismos, como la comunicación directa, el intercambio de información, la 
+negociación y la coordinación. Los agentes comparten  conocimientos, realiza n tareas 
+específicas, coopera n en la toma de decisiones y coordina n acciones para alcanzar un 
+objetivo conjunto.  
+Los sistemas multiagente son utilizados en una amplia gama de aplicaciones, 
+como la logística, el tráfico inteligente, la gestión de recursos, la robótica colaborativa y 
+los juegos en línea, entre otros. En estas aplicaciones, los agentes trabajan juntos p ara 
+abordar problemas complejos que requieren la colaboración de múltiples entidades.  
+Agentes basados en aprendizaje : Representan una categoría avanzada de 
+sistemas inteligentes, dotados de la capacidad de auto -mejora y adaptación a través de la 
+experiencia. Estos agentes incorporan algoritmos de aprendizaje automático de última 
+generación para procesar y aprender de los d atos obtenidos de su entorno.  
+El proceso de aprendizaje en estos agentes es sofisticado e implica no solo el 
+reconocimiento de patrones y la identificación de relaciones, sino también la extracción 
+y análisis profundo de información pertinente de los datos de entrada. Aprenden mediante  
+un proceso continuo de retroalimentación, donde comparan los resultados actuales con 
+los objetivos o resultados ideales, y ajustan sus métodos y estrategias en consecuencia.  
+Con el tiempo, estos agentes evolucionan y optimizan su comportamiento, 
+tomando decisiones cada vez más precisas y efectivas basadas en el cúmulo de 
+experiencias pasadas y el conocimiento acumulado. Esta capacidad de adaptación y 
+aprendizaje continuo los h ace extraordinariamente eficaces en una amplia variedad de 
+entornos y aplicaciones.  
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+48 Existen diversos métodos de aprendizaje utilizados por agentes basados en el 
+aprendizaje, cada uno con características y aplicaciones distintas. En el aprendizaje 
+supervisado, los agentes trabajan con conjuntos de datos etiquetados, aprendiendo a 
+clasifica r o predecir nuevos datos basándose en ejemplos previos  (Xiao, 2022) . Por otro 
+lado, en el aprendizaje no supervisado, los agentes exploran datos sin etiquetar para 
+descubrir patrones y estructuras ocultas por sí mismos. Mientras tanto, en el aprendizaje 
+por refuerzo, los agentes mejoran su rendimiento interactuando direct amente con el 
+entorno, siendo recompensados o penalizados según las consecuencias de sus acciones.  
+Los agentes basados en aprendizaje tienen la notable capacidad de adaptarse y 
+perfeccionar su desempeño con la exposición a más datos y experiencias. Estos sistemas 
+ajustan continuamente sus modelos internos y estrategias, optimizando su 
+comportamiento par a alcanzar los objetivos.  
+Estos agentes encuentran aplicación en una amplia gama de campos, incluyendo 
+reconocimiento de voz, visión por computadora, recomendación de productos, análisis de 
+grandes conjuntos de datos y toma de decisiones en tiempo real. Mediante el uso del  
+aprendizaje automático, estos agentes pueden procesar y aprender eficientemente de 
+grandes volúmenes de datos, adaptándose a entornos y requerimientos en constante 
+cambio.  
+Agentes basados en reglas:  Son sistemas inteligentes que utilizan un conjunto de 
+reglas predefinidas para tomar decisiones y realizar acciones en función de la información 
+disponible. Estas reglas pueden estar basadas en conocimiento experto o en reglas lógicas, 
+y son diseñadas por expertos en el dominio específico del problema.  
+El funcionamiento de estos agentes se basa en la evaluación de condiciones y la 
+aplicación de acciones correspondientes. Cada regla consta de una condición o conjunto 
+de condiciones que deben ser satisfechas para que la regla se aplique, y una acción que se 
+llevará a cabo si se cump len las condiciones.  
+Cuando un agente recibe información del entorno, evalúa las reglas una por una 
+en orden y verifica si las condiciones de cada regla se cumplen. Si encuentra una regla 
+cuyas condiciones se satisfacen, el agente ejecuta la acción asociada a esa regla. Si 
+ninguna regla se cumple, el agente puede tener una regla predeterminada o una acción 
+por defecto  a realizar . 
+Los agentes basados en reglas son especialmente útiles cuando el dominio del 
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+49 problema es bien estructurado y se pueden identificar claramente las reglas que guían el 
+comportamiento del agente. Estos agentes son utilizados en sistemas expertos, donde el 
+conocimiento de un experto en un campo específico se codifica en forma de reglas  para 
+realizar tareas de diagnóstico, asesoramiento o toma de decisiones.  
+Agentes basados en comportamiento:  Estos sistemas inteligentes son diseñados 
+para emular el comportamiento de seres vivos, ya sea humano u otros organismos. Estos 
+agentes se centran en replicar acciones y respuestas específicas en función de estímulos 
+del entorno, con el objetivo de generar  un comportamiento realista y coherente.  
+El enfoque principal de estos agentes  es la simulación de patrones de 
+comportamiento observados en seres vivos. Estos patrones pueden incluir movimientos, 
+reacciones a estímulos, toma de decisiones y acciones que se asemejan a las de 
+organismos reales. Para lograr lo, estos agentes suelen utilizar técnicas como los 
+algoritmos de inteligencia artificial y el modelado de sistemas complejos.  
+Los agentes basados en comportamiento son comunes en simulaciones y juegos, 
+donde se busca recrear entornos virtuales con comportamientos realistas. Por ejemplo : 
+juegos de simulación de vida, juegos de simulación de ciudades o de mascotas virtuales ; 
+los agentes basados en comportamiento pueden imitar acciones y respuestas similares a 
+las de los seres vivos para proporcionar una experiencia de juego más inmersiva.  
+Estos agentes también se utilizan  en aplicaciones de entrenamiento y aprendizaje, 
+donde se busca replicar comportamientos específicos para fines educativos o de 
+entrenamiento. Por ejemplo, en simuladores de vuelo, los agentes basados en 
+comportamiento pueden replicar las acciones y reacci ones de pilotos reales para enseñar 
+a los usuarios cómo operar una aeronave.  
+Agentes híbridos:  Estos agentes son sistemas inteligentes que combinan 
+características y técnicas de diferentes tipos de  agentes que se mencionaron  
+anteriormente. Estos agentes aprovechan las fortalezas de múltiples enfoques para lograr 
+un desempeño óptimo en una variedad de situaciones.  
+La idea detrás de los agentes híbridos es capitalizar las ventajas de diferentes 
+paradigmas de agente para abordar de manera efectiva problemas complejos y dinámicos. 
+Por ejemplo, un agente híbrido puede combinar elementos de agentes reactivos y basados 
+en conocimiento. Esto significa que el agente toma decisiones rápidas y eficientes en 
+situaciones conocidas utilizando reglas o conocimiento predefinido, y también puede 
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+50 adaptarse y aprender de nuevas situaciones utilizando técnicas de aprendizaje automático.  
+Otro ejemplo es un asistente virtual en un dispositivo móvil. Este agente puede 
+utilizar un enfoque reactivo para responder rápidamente a comandos de voz o preguntas 
+frecuentes, aprovechando patrones y reglas predefinidas. Al mismo tiempo, puede 
+incorporar técnicas de apr endizaje automático para mejorar su capacidad de entender el 
+contexto del usuario y brindar respuestas más personalizadas y precisas.  
+Cada tipo de agente tiene sus propias fortalezas y limitaciones, y la elección del 
+tipo de agente adecuado dependerá del problema o la tarea específica que se esté 
+abordando. La selección del tipo de agente correcto es fundamental para lograr un 
+rendimient o óptimo en sistemas de Inteligencia Artificial.  
+1.7.3 Arquitecturas de programas para agentes  
+Estas arquitecturas se basan en los objetivos aplicativos del agente. Las 
+arquitecturas de agentes a  ser revisadas son: arquitectura reactiva  simpl e, arquitectura 
+deliberante , arquitectura  por finalidad , arquitectura basada en  el razonamiento humano , 
+arquitectura de agente de reforzamiento, arquitectura de agente de aprendizaje profundo, 
+arquitectura de agente multiagente.  
+a) Arquitectura reactiva  simple  
+La arquitectura reactiva simple es una forma básica de diseño de agentes en la que 
+el comportamiento del agente se basa en una correspondencia directa entre el estímulo 
+recibido y la respuesta generada. En esta arquitectura, el agente no posee habilidades de 
+toma de decisiones sofisticadas, sino que simplemente reacciona al entorno en el que se 
+encuentra.  El agente percibe el entorno a través de sensores y, en función de esa 
+percepción, elige la acción más apropiada para interactuar con el entorno. Esta ele cción 
+de acción se realiza mediante reglas de condición -acción (si -entonces), que establecen la 
+conexión entre la percepción actual y la acción a tomar.  
+Esta arquitectura es adecuada para entornos simples donde las percepciones 
+históricas no son relevantes y solo se requiere una respuesta inmediata y directa al 
+estímulo presente. Puede ser implementada en hardware o mediante software con 
+algoritmos de búsq ueda rápidos.  
+Es importante destacar que esta arquitectura solo funciona correctamente en 
+entornos totalmente observables, es decir, cuando el agente tiene acceso a toda la 
+información relevante del entorno. Si hay partes del entorno que no son observables, 
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+51 pueden surgir problemas debido a la falta de información completa para tomar decisiones 
+precisas.  
+ 
+Figura 1.8 Arquitectura Reactiva Simple  
+Elaborado por los Autores  
+La figura 1. 8 representa de manera esquemática un agente que utiliza la 
+arquitectura reactiva simple. Este agente está equipado con sensores que le permiten 
+percibir el estado del mundo en el que trabaja , también cuenta con actuadores que le 
+permiten llevar a cabo acciones específicas en respuesta a esa percepción.  
+El agente utiliza los sensores para recopilar información sobre el entorno y generar 
+una representación interna del estado actual del mundo. Basándose en esta información, 
+el agente consulta las reglas de condición -acción predefinidas que tiene almacenadas . 
+Estas reglas establecen condiciones específicas , que cuando se cumplen, indican qué 
+acción debe tomar el agente.  Una vez que el agente determina la acción adecuada en 
+función de las reglas de condición -acción, utiliza los actuadores para llevar a cabo esa 
+acción en el entorno. Estas acciones pueden incluir manipulación física, interacción con 
+otros agentes o cualquier otro tipo de respuesta que sea necesaria en ese contexto.  
+b) Arquitectura deliberante  
+La arquitectura deliberante, representada en la figura 1. 9, es una estructura más 
+compleja que la arquitectura reactiva simple. Esta arquitectura es adecuada para entornos 
+parcialmente observables, donde el agente necesita tener en cuenta un historial reciente 
+de información para tomar decisiones.  
+A diferencia de la arquitectura reactiva simple, el agente deliberante tiene la 
+capacidad de deliberar sobre la acción a realizar en función de la información disponible 
+
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+52 y el estado actual del entorno. Para esto, el agente recopila y analiza tanto la información 
+sobre la evolución del entorno como las posibles consecuencias de sus acciones.  
+ 
+Figura 1.9 Arquitectura Deliberante  
+Elaborado por los Autores  
+ 
+El proceso de selección de acción en un agente de IA puede implementarse a 
+través de reglas de producción o mediante el empleo de redes neuronales, dependiendo 
+de la complejidad del problema y la disponibilidad de información. Las reglas de 
+producción prop orcionan un marco lógico y estructurado para evaluar opciones y tomar 
+decisiones, mientras que las redes neuronales, con su capacidad de aprendizaje profundo 
+y adaptativo, permiten al agente analizar y procesar una gama más amplia y compleja de 
+datos para seleccionar la acción más pertinente que le permita alcanzar sus objetivos.  
+La arquitectura deliberante, es particularmente valiosa en el manejo de problemas 
+complejos y en la realización de tareas de planificación avanzada. En esta arquitectura, el 
+agente es capaz de ejecutar secuencias de acciones de forma estratégica y calculad a, con 
+el fin de lograr objetivos específicos dentro de su entorno. Esta capacidad para deliberar 
+y planificar a largo plazo es un aspecto importante en el diseño de agentes inteligentes 
+destinados a resolver tareas que requieren un nivel superior de cogni ción y adaptación  
+(Gelfond & Kahl, 2014) . 
+c) Arquitectura por finalidad  
+La arquitectura por finalidad, representada en la figura 1. 10, es una estructura que 
+se basa en la idea de que el agente debe tener una comprensión clara de su objetivo final 
+para tomar decisiones efectivas en cada estado del entorno. Además de la percepción del 
+mundo en cada nuevo estado, es necesario tener informa ción sobre la dirección en la que 
+
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+53 el agente desea llegar, de modo que pueda evaluar si los estados intermedios alcanzados 
+por las acciones tomadas lo acercarán o alejarán de su objetivo final.  
+ 
+Figura 1.10 Arquitectura por Finalidad  
+Elaborado por los Autores  
+ 
+En esta arquitectu ra, el agente tiene flexibilidad para modificar su conocimiento 
+y adaptarse en función de las decisiones que va tomando. El estado actual del entorno se 
+actualiza constantemente a través de los sensores del agente, y cuando se identifica una 
+acción que se puede realizar, el agente la lleva a cabo mediante el control de sus 
+actuadores.  
+Las estrategias de búsqueda son un ejemplo concreto de esta arquitectura. El 
+agente utiliza técnicas de búsqueda para explorar el espacio de posibles acciones y 
+encontrar una secuencia de acciones que lo lleve hacia su objetivo final. A medida que el 
+agent e recopila información a través de la percepción y realiza acciones, puede evaluar si 
+se está acercando o alejando de su objetivo, y ajustar su estrategia en consecuencia.  
+d) Arquitectura basada en el razonamiento humano  
+La arquitectura que se muestra en la figura 1.1 1 es un ejemplo de una arquitectura 
+de agente basada en el razonamiento humano. En este caso, el agente opera en un entorno 
+parcialmente observable, lo que significa que no tiene acceso completo a toda la 
+información del entorno. Sin embargo, el agente es c apaz de formarse una idea del estado 
+del medio ambiente en el que existe utilizando la información disponible a través de sus 
+sensores.  
+En esta arquitectura, el agente tiene objetivos que actúan como su motivación 
+
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+54 principal para alcanzar una meta deseada. Para lograr esto, el agente necesita seleccionar 
+una o más acciones que modificarán el estado del medio ambiente con el fin de satisfacer 
+su necesidad de alcanzar la meta. Esta toma de decisiones se realiza conside rando los 
+objetivos y evaluando cómo cada acción contribuirá a su logro.  
+ 
+ 
+Figura 1.11 Arquitectura Basado en el razonamiento humano  
+Elaborado por los Autores  
+ 
+La arquitectura es especialmente útil cuando existen objetivos conflictivos y se 
+requiere buscar un equilibrio entre ellos para alcanzar la meta deseada. También es 
+adecuada cuando hay múltiples objetivos y existe incertidumbre sobre la posibilidad de 
+alcanzarlos todos. En tales casos, el agente necesita evaluar las probabilidades de éxito 
+de cada objetivo y tomar decisiones que maximicen las posib ilidades de alcanzar la meta 
+general.  
+e) Arquitectura de agente de reforzamiento  
+El agente por refuerzo emplea una técnica de aprendizaje automático que permite 
+a un agente aprender a tomar decisiones secuenciales óptimas a través de la interacción 
+con su medio ambiente. Las decisiones óptimas el agente las toma mediante la 
+maximizació n de una recompensa numérica. El agente interactúa con su medio ambiente 
+y recibe una señal de recompensa cada vez que realiza una acción.  
+El agente no se guía mediante instrucciones explícitas sobre las acciones a tomar, 
+en su lugar, adquiere conocimiento a través de la experiencia y el error. Cada vez que el 
+agente realiza una acción, el entorno le otorga una recompensa numérica. La meta de l 
+
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+55 agente es maximizar la acumulación de estas recompensas a lo largo del tiempo.  
+En el aprendizaje por refuerzo, surge un desafío fundamental: encontrar el 
+equilibrio adecuado entre la exploración de nuevas acciones y la explotación de aquellas 
+acciones que han demostrado producir recompensas significativas. El agente  (figura 1.12)  
+debe aprender a explorar lo suficiente para descubrir estrategias efectivas y luego 
+aprovechar esas estrategias para maximizar sus recompensas.  
+ 
+Figura 1.12 Arquitectura de agente de reforzamiento  
+Elaborado por los Autores  
+El agente utiliza una política para determinar qué acción tomar en función de su 
+estado actual y de su conocimiento. La política puede ser determinista o estocástica, 
+dependiendo de si siempre elige la misma acción en un estado dado o si toma decisiones 
+basadas en probabilidades.  
+El núcleo fundamental del aprendizaje por refuerzo radica en la habilidad de 
+aprender de manera progresiva  a largo tiempo , a medida que se actualizan valores 
+denominados valores de acción o funciones de valor. Estos valores proporcionan una 
+estimación de la utilidad prevista al ejecutar una acción específica en un estado particular.  
+Dentro del campo del aprendizaje por refuerzo, se encuentran diversos algoritmos 
+destacados, como Q -learning, SARSA, DDPG (Deep Deterministic Policy Gradients) y 
+A3C (Asynchronous Advantage Actor -Critic). Cada uno de estos algoritmos se 
+especializa en abor dar aspectos específicos del aprendizaje por refuerzo, como la 
+exploración, la estimación de valores y política de actualización.  
+f) Arquitectura de agente de aprendizaje profundo  
+Esta arquitectura (figura 1.13) representa una categoría avanzada de enfoques en 
+
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+56 la inteligencia artificial, fundamentada en el uso de redes neuronales profundas o DNN 
+(Deep Neural Networks). Estas redes, compuestas por múltiples capas de neuronas 
+artificiales interconectadas, están diseñadas para aprender de grandes volúmenes de datos  
+y realizar tareas específicas de manera autónoma  (Haykin, 2009) . Imitando la 
+complejidad del cerebro humano, estas redes permiten a las máquinas identificar 
+patrones, realizar predicciones y resolver problemas complejos sin necesidad de 
+intervención humana directa. El aprendizaje profundo, impulsado por estas redes, h a 
+revolucionado campos como el procesamiento de lenguaje natural, la visión por 
+computadora, la generación de texto, los videojuegos, la traducción automática, la 
+robótica, la toma de decisiones y las simulaciones avanzadas.  
+Una Red Neuronal Profunda se estructura en múltiples capas de neuronas 
+artificiales. Cada capa consiste en un conjunto de neuronas, también conocidas como 
+nodos o unidades, y se clasifican generalmente en tres categorías: la capa de entrada, una 
+o varias c apas ocultas, y la capa de salida. La profundidad de estas redes se define por el 
+número de capas ocultas presentes entre la entrada y la salida. A mayor número de capas 
+ocultas, más 'profunda' se considera la red, lo que implica una mayor capacidad para 
+aprender características complejas y abstractas de los datos.  
+ 
+Figura 1.13 Arquitectura de agente de aprendizaje profundo  
+Elaborado por los Autores  
+La profundidad en las redes neuronales profundas permite una representación 
+jerárquica de los datos. A medida que los datos pasan a través de las capas, las 
+características y abstracciones se vuelven progresivamente más complejas y abstractas. 
+Esto signifi ca que la red puede aprender automáticamente características simples en las 
+primeras capas, como bordes y texturas, y luego construir representaciones más 
+abstractas, como formas y objetos, en capas posteriores.  
+Entrenar redes neuronales profundas puede ser un desafío computacional, debido 
+a que la retropropagación de gradientes (el algoritmo utilizado para ajustar los pesos de 
+
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+57 la red) puede volverse inestable en redes profundas  (Kowaliw et  al., 2014) . Sin embargo, 
+se han desarrollado técnicas como la normalización de lotes, funciones de activación 
+apropiadas y optimizadores avanzados para abordar estos desafíos y permitir el 
+entrenamiento eficiente.  
+Además de las redes neuronales estándar existen las Redes Neuronales 
+Convolucionales (CNN) que son excelentes para el procesamiento de datos estructurados  
+a través de matrices bidimensionales , como la clasificación y segmentación de imágenes 
+y las Redes Neuronales Recurrentes (RNN)  que son efectivas para datos secuenciales, 
+como el procesamiento de lenguaje natural  (Haykin, 2009) .  
+El Aprendizaje por Reforzamiento Profundo (DRL) es un subcampo esencial en  
+el que los agentes emplean redes neuronales profundas para aprender a tomar decisiones 
+secuenciales en entornos interactivos, esto  se logra a través de la retroalimentación de 
+recompensas, donde la red es entrenada con el objetivo de maximizar las recompensas 
+acumuladas a lo largo del tiempo.  
+g) Arquitectura de agente multiagente  
+La arquitectura multiagente  (figura 1.14)  representa un enfoque innovador y 
+fascinante en el campo de la inteligencia artificial y la robótica. Este enfoque se centra en 
+el diseño y la implementación de sistemas en los que múltiples agentes, ya sean entidades 
+autónomas como robots, programas de s oftware o incluso seres humanos, colaboran para 
+alcanzar objetivos tanto individuales como colectivos  (Franceschetti, 2018) . A través de 
+su interacción y cooperación, estos agentes pueden abordar problemas y ejecutar tareas 
+con mayor eficacia que si operaran de forma aislada.  
+Esta arquitectura destaca por su potencial para crear sistemas inteligentes 
+altamente adaptativos, capaces de funcionar eficientemente en entornos cambiantes y 
+bajo condiciones complejas y dinámicas. Entre sus aplicaciones prácticas más relevantes 
+se encue ntran el desarrollo de vehículos autónomos, la robótica avanzada, la planificación 
+logística, los sistemas de transporte inteligentes, la gestión de tráfico en ciudades 
+inteligentes, la simulación de sistemas complejos y el desarrollo de modelos financiero s 
+sofisticados.  
+Cada agente dentro de una arquitectura multiagente opera como una entidad 
+autónoma, equipado con sus propias metas y capacidades de toma de decisiones. Esto 
+permite que cada agente tome decisiones de manera independiente, basándose en su 
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+58 conocimiento particular y objetivos individuales, contribuyendo así a la eficacia y 
+adaptabilidad del sistema en su conjunto . 
+ 
+ 
+Figura 1.14 Arquitectura de agente multiagente  
+Elaborado por los Autores  
+Teniendo los agentes objetivos individuales pueden al mismo tiempo trabajar 
+juntos para lograr objetivos colectivos. Esta dualidad permite una amplia gama de 
+aplicaciones, desde sistemas de control de tráfico aéreo, donde los aviones individuales 
+buscan su s rutas óptimas mientras evitan colisiones, hasta sistemas de recomendación en 
+línea, donde los agentes (en calidad de algoritmos de recomendación) trabajan juntos para 
+brindar recomendaciones personalizadas a los usuarios.  
+La comunicación entre agentes es esencial,  pueden comunicarse directa o 
+indirectamente para compartir información relevante, coordinar acciones y tomar 
+decisiones informadas. La comunicación puede ser unidireccional o bidireccional y puede 
+implicar intercambios de datos, mensajes, señales, eventos o incluso lenguaje natural en 
+sistemas más avanzados.  La elección de cómo se implementa la comunicación entre 
+agentes depende de la aplicación específica y de los requisitos del sistema. En muchas 
+arquitecturas mu ltiagente, se utilizan múltiples formas de comunicación en combinación 
+para permitir una interacción efectiva entre los agentes. La comunicación efectiva es 
+esencial para lograr la colaboración y la coordinación entre los agentes y para alcanzar 
+los objeti vos individuales o colectivos en un sistema multiagente.  
+En una arquitectura multiagente, la toma de decisiones distribuida es una 
+característica clave, pueden tomar decisiones de manera independiente y cooperativa. 
+Esto a menudo involucra la coordinación de acciones para evitar conflictos o 
+redundancias y para lograr objetivos comunes  (Shi, 2019) . 
+Los agentes pueden aprender y adaptarse a lo largo del tiempo, utilizando técnicas 
+de aprendizaje automático y algoritmos de refuerzo para mejorar  sus estrategias y tomar 
+
+
+FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL: UNA VISION  INTRODUCTORIA  
+ISBN General: 978 -631-6557 -23-0  ISBN Tomo 1: 978 -631-6557 -25-4 
+ 
+ 
+ 
+59 decisiones más efectivas. Este aprendizaje puede ser individual o colectivo, donde los 
+agentes comparten conocimientos.  
+Estas arquitecturas son adecuadas para modelar entornos dinámicos donde las 
+situaciones cambian constantemente. Los agentes deben adaptarse y reaccionar en tiempo 
+real a nuevas circunstancias.  
+La escalabilidad es un reto importante en sistemas con un gran número de agentes, 
+la arquitectura debe ser eficiente para manejar múltiples agentes y garantizar un 
+rendimiento adecuado.  
+1.8 El conocimiento  
+El razonamiento humano, que se fundamenta en el conocimiento acumulado para 
+derivar conclusiones, sirve como base para el desarrollo de sistemas en el campo de la 
+Inteligencia Artificial. En IA, la investigación se puede dividir en dos corrientes 
+principales: la inteligencia simbólica y la inteligencia computacional.  
+La inteligencia simbólica, también conocida como IA tradicional, se enfoca en la 
+resolución de problemas mediante un razonamiento basado en conocimientos explícitos. 
+Esta vertiente utiliza representaciones simbólicas y reglas lógicas para procesar 
+informac ión y deducir soluciones. Este enfoque se caracteriza por la programación de 
+algoritmos complejos y la manipulación de símbolos para emular tareas cognitivas.  
+Por otro lado, la inteligencia computacional aborda la resolución de problemas a 
+partir de la conexión y análisis de datos. Esta corriente incluye técnicas avanzadas como 
+redes neuronales artificiales, algoritmos genéticos, sistemas difusos (fuzzy logic), 
+programación evolutiva y vida artificial  (Martinsanz & Peñas, 2005) . Estas técnicas se 
+inspiran en el funcionamiento de sistemas biológicos y tienen como objetivo replicar su 
+capacidad innata de aprendizaje y adaptación, permitiendo a los sistemas de IA mejorar 
+y evolucionar de forma autónoma.  
+Ambas categorías de investigación en IA tienen sus propias fortalezas y 
+aplicaciones. La inteligencia simbólica es efectiva para problemas que se pueden expresar 
+en términos lógicos y que requieren razonamiento basado en reglas y conocimiento 
+explícito. Po r otro lado, la inteligencia computacional es útil en problemas donde los datos 
+son complejos y se requiere un enfoque más basado en el aprendizaje y la adaptación.  
+La Inteligencia Artificial (IA) se puede entender como la ciencia que se ocupa de 
+la ingeniería del conocimiento, abordando la representación, adquisición y aplicación del 
