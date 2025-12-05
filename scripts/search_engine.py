@@ -2,7 +2,7 @@
 # Motor de busqueda semantica que usa FAISS si esta disponible,
 # sino utiliza busqueda por similitud coseno con numpy.
 
-from typing import List, Tuple, Optional
+from typing import List, Tuple, Optional, Dict, Any
 import numpy as np
 
 try:
@@ -17,7 +17,7 @@ class FaissIndexWrapper:
     def __init__(self, embeddings: np.ndarray):
         d = embeddings.shape[1]
         self.index = faiss.IndexFlatIP(d)
-        # we will store normalized vectors to use inner product as cosine
+        # almacenaremos vectores normalizados para usar el producto interno como coseno
         emb = embeddings.astype('float32')
         # normalize
         norms = np.linalg.norm(emb, axis=1, keepdims=True)
@@ -54,5 +54,42 @@ def build_index(embeddings: np.ndarray):
         return NumpyIndex(embeddings)
 
 
-def search(index, query_embedding: np.ndarray, top_k: int = 5):
-    return index.search(query_embedding, top_k=top_k)
+class SemanticSearcher:
+    """
+    Clase principal para manejar la búsqueda semántica.
+    Centraliza la lógica de codificación de preguntas y formateo de resultados.
+    """
+    def __init__(self, model, embeddings: np.ndarray, metadata: List[Dict[str, Any]]):
+        self.model = model
+        self.metadata = metadata
+        self.index = build_index(embeddings)
+
+    def search(self, query: str, top_k: int = 5) -> List[Dict[str, Any]]:
+        """
+        Realiza una búsqueda semántica para la consulta dada.
+        Retorna una lista de diccionarios con texto, score y fuente.
+        """
+        query = query.strip()
+        if not query:
+            return []
+
+        # Codificar la pregunta (normalizando para similitud coseno)
+        # Asumimos que el modelo tiene el método encode (sentence-transformers)
+        q_emb = self.model.encode([query], convert_to_numpy=True, normalize_embeddings=True)[0]
+
+        # Buscar en el índice
+        raw_results = self.index.search(q_emb, top_k=top_k)
+
+        # Formatear resultados
+        results = []
+        for idx, score in raw_results:
+            if idx < len(self.metadata):
+                item = self.metadata[idx]
+                results.append({
+                    'text': item.get('text', ''),
+                    'source': item.get('source', 'desconocida'),
+                    'score': float(score)
+                })
+        
+        return results
+
