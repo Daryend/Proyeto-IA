@@ -42,7 +42,8 @@ def main() -> int:
     model = SentenceTransformer(args.model)
 
     print('Generando embeddings...')
-    embeddings = model.encode(texts, show_progress_bar=True, convert_to_numpy=True, normalize_embeddings=False)
+    # CAMBIO IMPORTANTE: normalize_embeddings=True ayuda mucho a la búsqueda por similitud coseno
+    embeddings = model.encode(texts, show_progress_bar=True, convert_to_numpy=True, normalize_embeddings=True)
 
     # Guardar embeddings y metadata
     emb_path = out_dir / 'embeddings.npz'
