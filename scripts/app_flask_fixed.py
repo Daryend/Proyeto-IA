@@ -34,7 +34,9 @@ with META_PATH.open('r', encoding='utf-8') as f:
 
 print('Cargando modelo...')
 MODEL = SentenceTransformer(MODEL_NAME)
-INDEX = search_engine.build_index(EMBEDDINGS)
+
+# Inicializar el buscador semántico
+SEARCHER = search_engine.SemanticSearcher(MODEL, EMBEDDINGS, METADATA)
 
 # Página HTML - Chat minimalista (sin controles expuestos)
 HTML = """
@@ -128,18 +130,16 @@ def api_search():
 
         # Parámetros fijos
         top_k = 3
-        threshold = 0.60
+        threshold = 0.45
 
-        q_emb = MODEL.encode([question], convert_to_numpy=True)[0]
-        raw_results = search_engine.search(INDEX, q_emb, top_k=top_k)
+        # Usar SemanticSearcher
+        raw_results = SEARCHER.search(question, top_k=top_k)
 
         results = []
         if raw_results:
-            top_idx, top_score = raw_results[0]
-            if top_score >= threshold:
-                for idx, score in raw_results:
-                    meta = METADATA[idx]
-                    results.append({'text': meta.get('text', ''), 'score': float(score), 'source': meta.get('source', 'desconocida')})
+            top_result = raw_results[0]
+            if top_result['score'] >= threshold:
+                results = raw_results
 
         return jsonify({'results': results}), 200
     except Exception as e:
