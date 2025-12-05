@@ -45,29 +45,33 @@ def main():
     with st.sidebar:
         model_name = st.text_input('Modelo embeddings', 'all-MiniLM-L6-v2')
         top_k = st.number_input('Top K', min_value=1, max_value=10, value=3)
-        threshold = st.slider('Umbral de similitud', 0.0, 1.0, 0.60)
+        threshold = st.slider('Umbral de similitud', 0.0, 1.0, 0.45)
 
     embeddings = load_embeddings()
     meta = load_metadata()
     model = get_model(model_name)
-    index = search_engine.build_index(embeddings)
+  
+    # Instanciar SemanticSearcher
+    searcher = search_engine.SemanticSearcher(model, embeddings, meta)
 
     q = st.text_input('Pregunta:', '')
     if st.button('Buscar') and q.strip():
-        q_emb = model.encode([q], convert_to_numpy=True)[0]
-        results = search_engine.search(index, q_emb, top_k=top_k)
+        # Usar SemanticSearcher
+        results = searcher.search(q, top_k=top_k)
+        
         if not results:
             st.info('Lo siento, no encontré información relevante sobre eso en el libro.')
         else:
-            top_idx, top_score = results[0]
+            top_result = results[0]
+            top_score = top_result['score']
+          
             if top_score < threshold:
                 st.info('Lo siento, no encontré información relevante sobre eso en el libro.')
             else:
                 st.success(f'Resultados (top score={top_score:.3f})')
-                for idx, score in results:
-                    item = meta[idx]
+                for item in results:
                     st.write('**Fuente:**', item.get('source', 'desconocida'))
-                    st.write('**Similitud:**', f'{score:.3f}')
+                    st.write('**Similitud:**', f"{item['score']:.3f}")
                     st.write(item.get('text', '')[:2000])
                     st.markdown('---')
 
