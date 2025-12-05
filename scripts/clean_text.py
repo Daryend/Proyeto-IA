@@ -1,44 +1,58 @@
-#!/usr/bin/env python3
-# Limpia el texto extraído eliminando ISBN, títulos repetidos,
-# encabezados, números de página y espacios en blanco excesivos.
+# clean_text.py → borra portada del principio y del final
 
 import re
 from pathlib import Path
 
 
 def clean_text(text: str) -> str:
-    # Elimina patrones no deseados del texto para mejorar la calidad de los chunks.
+    # 1. FORZAR AUTORES Y DEDICATORIA PERFECTOS AL INICIO
+    autores = "Autores: Patricio Xavier Moreno Vallejo, Gisel Katerine Bastidas Guacho y Patricio René Moreno Costales"
+    dedicatoria = ("Dedicatoria: A los niños Leonel Robayo Moreno, Victoria Robayo Moreno y Benjamín Moreno Bastidas. "
+                   "A quienes inspiraron esta obra: Peter Norvig, Stuart Russell, Brian Yu y Hugo Banda.")
+
+    # 2. ELIMINAR TODO HASTA "Información de Autores" (portada inicial)
+    text = re.sub(r'^.*?Información de Autores', 'Información de Autores', text, flags=re.DOTALL)
+
+    # 3. REEMPLAZAR BLOQUE AUTORES + DEDICATORIA POR VERSIÓN LIMPIA
+    text = re.sub(r'Información de Autores.*?Hugo\s+Banda', autores + "\n\n" + dedicatoria, text, flags=re.DOTALL)
+
+    # 4. ELIMINAR TODO EL RUIDO DE PORTADA (donde sea que aparezca)
+    portada_patterns = [
+        r'FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL[:\s]*UNA\s*VISI[ÓO]N?\s*INTRODUCTORIA.*?Tomo\s*\d+.*?[\n\r]+',
+        r'ISBN\s*(General|Tomo).*?[\n\r]+',
+        r'Primera Edición.*?2024',
+        r'PUERTO MADERO.*?Argentina',
+        r'Hecho en Argentina|Made in Argentina',
+        r'Elaborado por los? Autores?',
+        r'Figura \d+\.\d+.*?(\n\n|\Z)',
+        r'Tabla \d+\.\d+.*?\n',
+    ]
     
-    # Eliminar ISBN y patrones similares
-    text = re.sub(r'ISBN.*?:\s*[0-9\-\s]+', '', text, flags=re.IGNORECASE)
-    text = re.sub(r'ISBN\s*[0-9\-\s]+', '', text, flags=re.IGNORECASE)
+    for pattern in portada_patterns:
+        text = re.sub(pattern, '', text, flags=re.IGNORECASE | re.DOTALL)
+
+    # 5. CORRECCIONES OCR
+    text = text.replace("inge niería", "ingeniería")
+    text = text.replace("informac ión", "información")
+    text = text.replace("inteligenc ia", "inteligencia")
+    text = text.replace("lueg o", "luego")
+    text = text.replace("Norving", "Norvig")
+    text = text.replace("Russel", "Russell")
+
+    # 6. LIMPIEZA FINAL SIN ROMPER ESTRUCTURA
+    lines = []
+    for line in text.split('\n'):
+        line = line.strip()
+        if line and len(line) > 5:  # elimina líneas basura muy cortas
+            lines.append(line)
+        elif not line:
+            lines.append("")
     
-    # Eliminar números de página y patrones como "- 23 -"
-    text = re.sub(r'-\s*\d+\s*-', '', text)
-    text = re.sub(r'^\s*\d+\s*$', '', text, flags=re.MULTILINE)
-    
-    # Eliminar el título principal repetido múltiples veces
-    title_pattern = r'FUNDAMENTOS DE LA INTELIGENCIA ARTIFICIAL:\s*UNA\s*VISION\s*INTRODUCTORIA'
-    text = re.sub(title_pattern, '', text, flags=re.IGNORECASE)
-    
-    # Eliminar encabezados comunes repetidos
-    text = re.sub(r'volumen\s*I', '', text, flags=re.IGNORECASE)
-    text = re.sub(r'Tomo\s*1', '', text, flags=re.IGNORECASE)
-    
-    # Eliminar líneas que solo contienen números o caracteres especiales
-    text = re.sub(r'^\s*[0-9\s\-_\.]+\s*$', '', text, flags=re.MULTILINE)
-    
-    # Consolidar múltiples espacios en blanco en uno
-    text = re.sub(r'\n\s*\n\s*\n+', '\n\n', text)
+    text = '\n'.join(lines)
+    text = re.sub(r'\n\n\n+', '\n\n', text)  # máximo 2 saltos
     text = re.sub(r'[ \t]+', ' ', text)
-    
-    # Eliminar espacios en blanco al inicio/final de líneas
-    text = '\n'.join(line.strip() for line in text.split('\n'))
-    
-    # Eliminar líneas vacías al inicio y final
-    text = text.strip()
-    
-    return text
+
+    return text.strip() + "\n"
 
 
 def main():
@@ -52,7 +66,7 @@ def main():
     print(f'Leyendo {input_path}...')
     text = input_path.read_text(encoding='utf-8')
     
-    print('Limpiando texto...')
+    print('Aplicando limpieza definitiva...')
     clean = clean_text(text)
     
     print(f'Guardando en {output_path}...')
