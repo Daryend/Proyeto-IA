@@ -16,9 +16,15 @@ Pasos para colaboradores (rápido y comprobable)
 1) Clona el repositorio
 
 ```powershell
-git clone <URL-del-repositorio>
-cd "Proyecto IA"
+Git Bash desde tu carpeta para repositorios
+git clone -b Testing_Chat_Bot_API https://github.com/Daryend/Proyeto-IA.git
 ```
+Nota: Puedes hacer las siguientes comprobaciones luego de clonar 
+    1.1) Entra a la carpeta
+        cd Proyeto-IA
+    1.2) Verifica que la rama sea la correcta
+        git branch
+    Debería aparecer un asterisco junto al nombre de la rama clonada
 
 2) Crear y activar el entorno virtual (PowerShell)
 
